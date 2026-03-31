@@ -943,7 +943,8 @@ footer p {
 }
 .f-logo img {
   height: 16px;
-  opacity: 0.2;
+  opacity: 0.4;
+  filter: sepia(1) saturate(3) hue-rotate(346deg) brightness(0.8);
 }
 
 /* TEMPLATE PAGE */
