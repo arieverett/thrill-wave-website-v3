@@ -1,0 +1,2 @@
+# Netlify redirects — clean URLs without .html
+/sitrep    /sitrep.html    200
