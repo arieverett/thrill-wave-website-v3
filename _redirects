@@ -1,6 +1,6 @@
 # Netlify redirects — clean URLs without .html
-/sitrep    /sitrep.html    200
+/sitrep      /sitrep.html      200
 /portfolio   /portfolio.html   200
 /intel       /intel.html       200
 /contact     /contact.html     200
-
+/partials/*  /partials/:splat  200

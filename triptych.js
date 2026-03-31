@@ -1,3 +1,7 @@
+/* ============================================
+   TRIPTYCH CANVAS ANIMATIONS
+   Shared by index.html and sitrep.html
+   ============================================ */
 (function () {
   function init(id, drawFn) {
     var c = document.getElementById(id);
@@ -24,20 +28,24 @@
       requestAnimationFrame(loop);
     })();
   }
+
+  /* --- INGEST --- */
   init("c1", {
     setup: function (W, H) {
       var streams = [],
-        collected = [];
-      for (var i = 0; i < 12; i++) {
-        var y = H * 0.12 + i * ((H * 0.55) / 12),
+        collected = [],
+        num = 12;
+      for (var i = 0; i < num; i++) {
+        var y = H * 0.12 + i * ((H * 0.55) / num),
           dots = [];
-        for (var j = 0; j < Math.floor(Math.random() * 10) + 6; j++)
+        for (var j = 0; j < Math.floor(Math.random() * 10) + 6; j++) {
           dots.push({
             x: Math.random() * W * 0.65,
             speed: 0.25 + Math.random() * 0.65,
             size: 1 + Math.random() * 1.2,
             alpha: 0.12 + Math.random() * 0.3,
           });
+        }
         streams.push({
           y: y,
           dots: dots,
@@ -47,7 +55,7 @@
       return { streams: streams, collected: collected };
     },
     draw: function (ctx, W, H, s) {
-      var cx = W * 0.8;
+      var collectX = W * 0.8;
       ctx.clearRect(0, 0, W, H);
       for (var i = 0; i < s.streams.length; i++) {
         var st = s.streams[i];
@@ -55,15 +63,15 @@
         ctx.lineWidth = 0.5;
         ctx.beginPath();
         ctx.moveTo(0, st.y);
-        ctx.lineTo(cx, st.y);
+        ctx.lineTo(collectX, st.y);
         ctx.stroke();
         for (var j = 0; j < st.dots.length; j++) {
           var d = st.dots[j];
           d.x += d.speed;
-          if (d.x > cx - 4) {
+          if (d.x > collectX - 4) {
             d.x = Math.random() * -50 - 10;
             s.collected.push({
-              x: cx,
+              x: collectX,
               y: st.y,
               vy: (Math.random() - 0.5) * 0.4,
               alpha: 0.5,
@@ -77,8 +85,8 @@
       ctx.strokeStyle = "rgba(255,255,255,0.05)";
       ctx.lineWidth = 0.5;
       ctx.beginPath();
-      ctx.moveTo(cx, H * 0.08);
-      ctx.lineTo(cx, H * 0.72);
+      ctx.moveTo(collectX, H * 0.08);
+      ctx.lineTo(collectX, H * 0.72);
       ctx.stroke();
       for (var k = s.collected.length - 1; k >= 0; k--) {
         var p = s.collected[k];
@@ -96,56 +104,60 @@
       }
     },
   });
+
+  /* --- SYNTHESIZE --- */
   init("c2", {
     setup: function (W, H) {
       var nodes = [],
-        cl = [
+        clusters = [
           { x: W * 0.3, y: H * 0.3 },
           { x: W * 0.65, y: H * 0.45 },
           { x: W * 0.4, y: H * 0.6 },
         ];
       for (var i = 0; i < 35; i++) {
-        var c = cl[Math.floor(Math.random() * cl.length)],
-          a = Math.random() * Math.PI * 2,
+        var cl = clusters[Math.floor(Math.random() * clusters.length)];
+        var angle = Math.random() * Math.PI * 2,
           dist = 18 + Math.random() * 70;
         nodes.push({
-          x: c.x + Math.cos(a) * dist,
-          y: c.y + Math.sin(a) * dist,
-          tx: c.x + Math.cos(a) * (12 + Math.random() * 35),
-          ty: c.y + Math.sin(a) * (12 + Math.random() * 35),
-          ox: c.x + Math.cos(a) * dist,
-          oy: c.y + Math.sin(a) * dist,
+          x: cl.x + Math.cos(angle) * dist,
+          y: cl.y + Math.sin(angle) * dist,
+          tx: cl.x + Math.cos(angle) * (12 + Math.random() * 35),
+          ty: cl.y + Math.sin(angle) * (12 + Math.random() * 35),
+          ox: cl.x + Math.cos(angle) * dist,
+          oy: cl.y + Math.sin(angle) * dist,
           size: 1 + Math.random() * 1.8,
           alpha: 0.12 + Math.random() * 0.35,
-          cluster: cl.indexOf(c),
+          cluster: clusters.indexOf(cl),
           phase: Math.random() * Math.PI * 2,
           speed: 0.003 + Math.random() * 0.005,
         });
       }
-      return { nodes: nodes, clusters: cl, t: 0 };
+      return { nodes: nodes, clusters: clusters, t: 0 };
     },
     draw: function (ctx, W, H, s) {
       s.t++;
       ctx.clearRect(0, 0, W, H);
-      var pr = Math.min(1, Math.sin(s.t * 0.007) * 0.5 + 0.5);
+      var progress = Math.min(1, Math.sin(s.t * 0.007) * 0.5 + 0.5);
       for (var i = 0; i < s.nodes.length; i++) {
-        var n = s.nodes[i];
-        n.x =
-          n.ox + (n.tx - n.ox) * pr + Math.sin(s.t * n.speed + n.phase) * 2.5;
+        var n = s.nodes[i],
+          drift = Math.sin(s.t * n.speed + n.phase) * 2.5;
+        n.x = n.ox + (n.tx - n.ox) * progress + drift;
         n.y =
           n.oy +
-          (n.ty - n.oy) * pr +
+          (n.ty - n.oy) * progress +
           Math.cos(s.t * n.speed * 0.7 + n.phase) * 1.5;
       }
-      for (var i = 0; i < s.nodes.length; i++)
+      for (var i = 0; i < s.nodes.length; i++) {
         for (var j = i + 1; j < s.nodes.length; j++) {
           var a = s.nodes[i],
             b = s.nodes[j];
           if (a.cluster !== b.cluster) continue;
-          var d = Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
-          if (d < 55) {
+          var dx = a.x - b.x,
+            dy = a.y - b.y,
+            dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 55) {
             ctx.strokeStyle =
-              "rgba(255,255,255," + (1 - d / 55) * 0.1 * pr + ")";
+              "rgba(255,255,255," + (1 - dist / 55) * 0.1 * progress + ")";
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -153,29 +165,29 @@
             ctx.stroke();
           }
         }
-      for (var ci = 0; ci < s.clusters.length; ci++)
+      }
+      for (var ci = 0; ci < s.clusters.length; ci++) {
         for (var cj = ci + 1; cj < s.clusters.length; cj++) {
-          var mD = Infinity,
-            bA,
-            bB;
+          var minD = Infinity,
+            bA = null,
+            bB = null;
           for (var i = 0; i < s.nodes.length; i++) {
             if (s.nodes[i].cluster !== ci) continue;
             for (var j = 0; j < s.nodes.length; j++) {
               if (s.nodes[j].cluster !== cj) continue;
-              var dd = Math.sqrt(
-                (s.nodes[i].x - s.nodes[j].x) ** 2 +
-                  (s.nodes[i].y - s.nodes[j].y) ** 2,
-              );
-              if (dd < mD) {
-                mD = dd;
+              var dx = s.nodes[i].x - s.nodes[j].x,
+                dy = s.nodes[i].y - s.nodes[j].y;
+              var dd = Math.sqrt(dx * dx + dy * dy);
+              if (dd < minD) {
+                minD = dd;
                 bA = s.nodes[i];
                 bB = s.nodes[j];
               }
             }
           }
-          if (bA && bB && pr > 0.3) {
+          if (bA && bB && progress > 0.3) {
             ctx.strokeStyle =
-              "rgba(224,96,0," + ((pr - 0.3) / 0.7) * 0.06 + ")";
+              "rgba(224,96,0," + ((progress - 0.3) / 0.7) * 0.06 + ")";
             ctx.lineWidth = 0.8;
             ctx.setLineDash([3, 4]);
             ctx.beginPath();
@@ -185,25 +197,27 @@
             ctx.setLineDash([]);
           }
         }
+      }
       for (var i = 0; i < s.nodes.length; i++) {
         var n = s.nodes[i];
-        ctx.fillStyle = "rgba(255,255,255," + (n.alpha * 0.5 + pr * 0.12) + ")";
+        ctx.fillStyle =
+          "rgba(255,255,255," + (n.alpha * 0.5 + progress * 0.12) + ")";
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
         ctx.fill();
       }
     },
   });
+
+  /* --- EXECUTE --- */
   init("c3", {
     setup: function (W, H) {
-      var beams = [];
-      for (var i = 0; i < 6; i++)
-        beams.push({
-          angle: -Math.PI * 0.32 + i * ((Math.PI * 0.64) / 5),
-          length: 0,
-          maxLength: W * 0.72,
-          alpha: 0,
-        });
+      var beams = [],
+        numBeams = 6;
+      for (var i = 0; i < numBeams; i++) {
+        var angle = -Math.PI * 0.32 + i * ((Math.PI * 0.64) / (numBeams - 1));
+        beams.push({ angle: angle, length: 0, maxLength: W * 0.72, alpha: 0 });
+      }
       return { beams: beams, rings: [], particles: [], t: 0, ringTimer: 0 };
     },
     draw: function (ctx, W, H, s) {
@@ -217,17 +231,17 @@
         s.rings.push({ r: 7, alpha: 0.2 });
       }
       for (var i = s.rings.length - 1; i >= 0; i--) {
-        var r = s.rings[i];
-        r.r += 0.35;
-        r.alpha -= 0.0025;
-        if (r.alpha <= 0) {
+        var ring = s.rings[i];
+        ring.r += 0.35;
+        ring.alpha -= 0.0025;
+        if (ring.alpha <= 0) {
           s.rings.splice(i, 1);
           continue;
         }
-        ctx.strokeStyle = "rgba(255,255,255," + r.alpha + ")";
+        ctx.strokeStyle = "rgba(255,255,255," + ring.alpha + ")";
         ctx.lineWidth = 0.5;
         ctx.beginPath();
-        ctx.arc(ox, oy, r.r, 0, Math.PI * 2);
+        ctx.arc(ox, oy, ring.r, 0, Math.PI * 2);
         ctx.stroke();
       }
       ctx.fillStyle = "rgba(224,96,0,0.07)";
@@ -240,28 +254,25 @@
       ctx.fill();
       for (var i = 0; i < s.beams.length; i++) {
         var b = s.beams[i];
-        b.length +=
-          (b.maxLength * (0.55 + Math.sin(s.t * 0.011 + i * 0.9) * 0.4) -
-            b.length) *
-          0.018;
+        var tl = b.maxLength * (0.55 + Math.sin(s.t * 0.011 + i * 0.9) * 0.4);
+        b.length += (tl - b.length) * 0.018;
         b.alpha = 0.035 + Math.sin(s.t * 0.014 + i * 1.1) * 0.018;
+        var ex = ox + Math.cos(b.angle) * b.length,
+          ey = oy + Math.sin(b.angle) * b.length;
         ctx.strokeStyle = "rgba(255,255,255," + b.alpha + ")";
         ctx.lineWidth = 0.5;
         ctx.beginPath();
         ctx.moveTo(ox, oy);
-        ctx.lineTo(
-          ox + Math.cos(b.angle) * b.length,
-          oy + Math.sin(b.angle) * b.length,
-        );
+        ctx.lineTo(ex, ey);
         ctx.stroke();
         if (s.t % 3 === 0 && Math.random() > 0.45) {
-          var sp = (Math.random() - 0.5) * 0.05,
-            spd = 1.2 + Math.random() * 1.8;
+          var spread = (Math.random() - 0.5) * 0.05,
+            speed = 1.2 + Math.random() * 1.8;
           s.particles.push({
             x: ox,
             y: oy,
-            vx: Math.cos(b.angle + sp) * spd,
-            vy: Math.sin(b.angle + sp) * spd,
+            vx: Math.cos(b.angle + spread) * speed,
+            vy: Math.sin(b.angle + spread) * speed,
             alpha: 0.25 + Math.random() * 0.25,
             size: 0.7 + Math.random(),
             life: 1,
