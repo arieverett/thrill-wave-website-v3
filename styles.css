@@ -976,6 +976,34 @@ footer p {
   text-transform: uppercase;
 }
 
+/* === HAMBURGER MENU === */
+.nav-burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 101;
+}
+.nav-burger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.3s;
+}
+.nav-burger.open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-burger.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
   .fm-cards {
@@ -998,11 +1026,39 @@ footer p {
   nav {
     padding: 12px 20px;
   }
+  .nav-burger {
+    display: flex;
+  }
   .nav-links {
-    gap: 16px;
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--black);
+    padding: 100px 40px 40px;
+    gap: 0;
+  }
+  .nav-links.open {
+    display: flex;
   }
   .nav-link {
-    display: none;
+    display: block;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--secondary);
+  }
+  .nav-link:hover {
+    color: var(--white);
+  }
+  .nav-cta {
+    margin-top: 24px;
+    display: inline-block;
+    text-align: center;
   }
   section {
     padding: 72px 20px;
@@ -1038,6 +1094,7 @@ footer p {
     gap: 10px;
   }
 }
+
 @media (max-width: 480px) {
   .mech-pills {
     flex-direction: column;
