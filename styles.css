@@ -92,7 +92,9 @@ nav {
 }
 
 .nav-right {
-  display: flex; align-items: center; gap: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .nav-cta:hover {
@@ -1028,36 +1030,84 @@ footer p {
   }
 }
 
-
 @media (max-width: 768px) {
-  nav { padding: 12px 20px; }
-  .nav-burger { display: flex; }
-  .nav-links {
-    display: none; flex-direction: column;
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: var(--black); padding: 100px 40px 40px;
-    gap: 0; z-index: 99;
+  nav {
+    padding: 12px 20px;
   }
-  .nav-links.open { display: flex; }
+  .nav-burger {
+    display: flex;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--black);
+    padding: 100px 40px 40px;
+    gap: 0;
+    z-index: 99;
+  }
+  .nav-links.open {
+    display: flex;
+    background: var(--black);
+  }
   .nav-link {
-    display: block; font-size: 14px; letter-spacing: 0.1em;
-    padding: 18px 0; border-bottom: 1px solid var(--border);
+    display: block;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
     color: var(--secondary);
   }
-  .nav-link:hover { color: var(--white); }
-  .nav-cta { font-size: 9px; padding: 8px 16px; }
-  .nav-burger { z-index: 101; }
-  .nav-right { z-index: 101; }
-  section { padding: 72px 20px; }
-  .hero { padding: 0 20px 56px; }
-  .fm-cards { grid-template-columns: 1fr; }
-  .fm-detail-inner.active { flex-direction: column; }
-  .fm-detail-right { width: 100%; }
-  .hero-ctas { flex-direction: column; align-items: flex-start; }
-  .cta { padding: 88px 20px; }
-  .vert-grid { grid-template-columns: 1fr; }
-  .mech-stream-label { width: 72px; font-size: 9px; }
-  footer { flex-direction: column; gap: 10px; }
+  .nav-link:hover {
+    color: var(--white);
+  }
+  .nav-cta {
+    font-size: 9px;
+    padding: 8px 16px;
+  }
+  .nav-burger {
+    z-index: 101;
+  }
+  .nav-right {
+    z-index: 101;
+  }
+  section {
+    padding: 72px 20px;
+  }
+  .hero {
+    padding: 0 20px 56px;
+  }
+  .fm-cards {
+    grid-template-columns: 1fr;
+  }
+  .fm-detail-inner.active {
+    flex-direction: column;
+  }
+  .fm-detail-right {
+    width: 100%;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cta {
+    padding: 88px 20px;
+  }
+  .vert-grid {
+    grid-template-columns: 1fr;
+  }
+  .mech-stream-label {
+    width: 72px;
+    font-size: 9px;
+  }
+  footer {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 @media (max-width: 480px) {
