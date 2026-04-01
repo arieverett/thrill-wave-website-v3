@@ -1034,6 +1034,12 @@ footer p {
   nav {
     padding: 12px 20px;
   }
+
+  nav {
+  padding: 12px 20px;
+  backdrop-filter: none;
+  background: var(--black);
+}
   .nav-burger {
     display: flex;
   }
