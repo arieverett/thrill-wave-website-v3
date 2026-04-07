@@ -1023,6 +1023,150 @@ footer p {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
+/* === CONTACT === */
+.contact-hero {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 48px 72px;
+  position: relative;
+  overflow: hidden;
+}
+.contact-hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--black);
+}
+.contact-hero .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 48px;
+  align-items: start;
+}
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.contact-method {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.contact-method:first-child {
+  padding-top: 0;
+}
+.contact-method-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.contact-method-value {
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.3;
+}
+.contact-method-value a {
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.contact-method-value a:hover {
+  color: var(--orange);
+}
+.contact-method-note {
+  font-size: var(--fs-body);
+  color: var(--gray);
+  line-height: 1.5;
+}
+.contact-calendly {
+  background: var(--near-black);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 580px;
+}
+.contact-calendly-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.contact-calendly-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+.contact-calendly-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.contact-calendly iframe {
+  width: 100%;
+  min-height: 540px;
+  border: none;
+}
+.contact-social {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 28px;
+}
+.contact-social-link {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-body);
+  letter-spacing: 0.06em;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.3s;
+  text-transform: uppercase;
+}
+.contact-social-link:hover {
+  color: var(--white);
+}
+.contact-cta-block {
+  text-align: center;
+  padding: 80px 48px;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+.contact-cta-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 35% 45% at 50% 100%,
+    var(--orange-glow) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+.contact-cta-text {
+  font-size: var(--fs-body);
+  color: var(--gray);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+}
+
 /* === INTEL / BLOG === */
 .intel-hero {
   min-height: 50vh;
@@ -1707,6 +1851,17 @@ footer p {
   .intel-subscribe {
     flex-direction: column;
     text-align: center;
+  }
+  .contact-hero {
+    min-height: 40vh;
+    padding: 0 20px 48px;
+  }
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .contact-cta-block {
+    padding: 60px 20px;
   }
   footer {
     flex-direction: column;
