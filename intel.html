@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Intel — Thrill Wave</title>
+    <title>Intel — Thrill Wave | Strategy & Field Notes</title>
+    <meta
+      name="description"
+      content="Strategy, production intelligence, and field notes from Thrill Wave. Writing by Chris Kuzman on research-driven video, storytelling, and organizational communications."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&family=IBM+Plex+Mono:wght@300;400;500&display=swap"
@@ -13,9 +17,524 @@
   </head>
   <body>
     <div id="site-nav"></div>
-    <section class="page-body"><p>Intel — update this later</p></section>
+
+    <!-- HERO -->
+    <section class="intel-hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow mono">Intel</div>
+        <h1 class="hero-h1">Field <strong>notes.</strong></h1>
+        <p class="hero-sub">
+          Strategy, production intelligence, and lessons from the field. Written
+          by Chris Kuzman. Published on
+          <a
+            href="https://chriskuzman.substack.com"
+            target="_blank"
+            rel="noopener"
+            style="
+              color: var(--orange);
+              text-decoration: none;
+              border-bottom: 1px solid var(--orange-border);
+            "
+            >Substack</a
+          >.
+        </p>
+      </div>
+    </section>
+
+    <!-- INTEL GRID -->
+    <section style="border-top: 1px solid var(--border)">
+      <!-- FILTER + SORT BAR -->
+      <div class="intel-bar">
+        <div class="intel-filters" id="intel-filters"></div>
+        <select class="intel-sort" id="intel-sort">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+        </select>
+      </div>
+
+      <!-- FEATURED POST -->
+      <div id="intel-featured"></div>
+
+      <!-- POST GRID -->
+      <div class="intel-grid" id="intel-grid">
+        <div class="intel-loading">
+          <div class="intel-loading-dot"></div>
+          Loading from Substack
+        </div>
+      </div>
+
+      <div class="intel-count" id="intel-count"></div>
+
+      <!-- SUBSCRIBE BAR -->
+      <div class="intel-subscribe">
+        <div class="intel-subscribe-text">
+          <div class="intel-subscribe-title">Get Intel in your inbox.</div>
+          <div class="intel-subscribe-desc">
+            Strategy and field notes from Chris. No spam, no fluff.
+          </div>
+        </div>
+        <a
+          href="https://chriskuzman.substack.com/subscribe"
+          target="_blank"
+          rel="noopener"
+          class="intel-subscribe-btn"
+          >Subscribe on Substack</a
+        >
+      </div>
+    </section>
+
     <div id="site-footer"></div>
+
     <script src="includes.js"></script>
     <script src="menu.js"></script>
+
+    <script>
+      (function () {
+        /* =============================================
+           CONFIGURATION
+           ============================================= */
+        var SUBSTACK_URL = "https://chriskuzman.substack.com";
+        var FEED_URL = SUBSTACK_URL + "/feed";
+
+        /* Category keywords — posts are auto-tagged based on 
+           title/content matching. Add or adjust as needed. */
+        var CATEGORY_RULES = [
+          {
+            tag: "strategy",
+            label: "Strategy",
+            keywords: [
+              "strategy",
+              "strategic",
+              "positioning",
+              "brand",
+              "market",
+              "audience",
+              "research",
+              "intelligence",
+              "SITREP",
+              "planning",
+            ],
+          },
+          {
+            tag: "production",
+            label: "Production",
+            keywords: [
+              "production",
+              "film",
+              "camera",
+              "shoot",
+              "edit",
+              "footage",
+              "video",
+              "cinematic",
+              "directing",
+              "lighting",
+            ],
+          },
+          {
+            tag: "distribution",
+            label: "Distribution",
+            keywords: [
+              "distribution",
+              "platform",
+              "social",
+              "youtube",
+              "algorithm",
+              "reach",
+              "paid media",
+              "organic",
+              "channel",
+            ],
+          },
+          {
+            tag: "culture",
+            label: "Culture",
+            keywords: [
+              "culture",
+              "industry",
+              "creative",
+              "storytelling",
+              "narrative",
+              "opinion",
+              "trend",
+              "lesson",
+              "field note",
+            ],
+          },
+        ];
+
+        var categories = [
+          { label: "All", tag: "all" },
+          { label: "Strategy", tag: "strategy" },
+          { label: "Production", tag: "production" },
+          { label: "Distribution", tag: "distribution" },
+          { label: "Culture", tag: "culture" },
+        ];
+
+        var allPosts = [];
+        var activeFilter = "all";
+        var sortOrder = "newest";
+
+        /* =============================================
+           FALLBACK POSTS — shown if RSS fails
+           ============================================= */
+        var fallbackPosts = [
+          {
+            title:
+              "Why Most Organizational Video Fails Before the Camera Turns On",
+            excerpt:
+              "Four failure modes. All preventable. The problem isn't production quality — it's the strategic foundation.",
+            date: "2025-03-15",
+            url: SUBSTACK_URL,
+            category: "strategy",
+            categoryLabel: "Strategy",
+            image: "",
+          },
+          {
+            title: "The SITREP: How We Decide What to Make",
+            excerpt:
+              "Before we unpack a camera, we ingest your full data environment. Here's what that actually means.",
+            date: "2025-02-28",
+            url: SUBSTACK_URL,
+            category: "strategy",
+            categoryLabel: "Strategy",
+            image: "",
+          },
+          {
+            title: "Distribution Is Not a Post-Production Problem",
+            excerpt:
+              "If you're thinking about distribution after the edit is locked, you've already lost. It needs to be built alongside production.",
+            date: "2025-02-10",
+            url: SUBSTACK_URL,
+            category: "distribution",
+            categoryLabel: "Distribution",
+            image: "",
+          },
+          {
+            title: "What I Learned Filming Tribal Health Directors",
+            excerpt:
+              "Standard messaging was counterproductive. They needed their own leaders on screen, not outside authorities.",
+            date: "2025-01-20",
+            url: SUBSTACK_URL,
+            category: "production",
+            categoryLabel: "Production",
+            image: "",
+          },
+          {
+            title: "The Vendor Pitched It Well. The Video Moved No One.",
+            excerpt:
+              "A production company came in with a polished pitch deck and a slick reel. The organization bought the format before defining success.",
+            date: "2025-01-05",
+            url: SUBSTACK_URL,
+            category: "culture",
+            categoryLabel: "Culture",
+            image: "",
+          },
+          {
+            title: "LLMs in Pre-Production: What We're Actually Doing",
+            excerpt:
+              "Sentiment analysis, narrative gap detection, audience trust scoring. How we use AI before we use a camera.",
+            date: "2024-12-18",
+            url: SUBSTACK_URL,
+            category: "strategy",
+            categoryLabel: "Strategy",
+            image: "",
+          },
+        ];
+
+        /* =============================================
+           AUTO-CATEGORIZE based on keywords
+           ============================================= */
+        function categorize(title, content) {
+          var text = (title + " " + content).toLowerCase();
+          var best = { tag: "culture", label: "Culture", score: 0 };
+          CATEGORY_RULES.forEach(function (rule) {
+            var score = 0;
+            rule.keywords.forEach(function (kw) {
+              if (text.indexOf(kw.toLowerCase()) !== -1) score++;
+            });
+            if (score > best.score) {
+              best = { tag: rule.tag, label: rule.label, score: score };
+            }
+          });
+          return best;
+        }
+
+        /* =============================================
+           PARSE RSS FEED
+           ============================================= */
+        function parseRSS(xml) {
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(xml, "text/xml");
+          var items = doc.querySelectorAll("item");
+          var posts = [];
+
+          items.forEach(function (item) {
+            var title = item.querySelector("title")
+              ? item.querySelector("title").textContent
+              : "";
+            var link = item.querySelector("link")
+              ? item.querySelector("link").textContent
+              : SUBSTACK_URL;
+            var desc = item.querySelector("description")
+              ? item.querySelector("description").textContent
+              : "";
+            var pubDate = item.querySelector("pubDate")
+              ? item.querySelector("pubDate").textContent
+              : "";
+            var enclosure = item.querySelector("enclosure");
+            var image =
+              enclosure && enclosure.getAttribute("url")
+                ? enclosure.getAttribute("url")
+                : "";
+
+            // Extract plain text excerpt from HTML description
+            var tmp = document.createElement("div");
+            tmp.innerHTML = desc;
+            var plainText = tmp.textContent || tmp.innerText || "";
+            var excerpt =
+              plainText.length > 200
+                ? plainText.substring(0, 200).trim() + "..."
+                : plainText.trim();
+
+            var cat = categorize(title, plainText);
+
+            posts.push({
+              title: title,
+              excerpt: excerpt,
+              date: pubDate
+                ? new Date(pubDate).toISOString().split("T")[0]
+                : "",
+              url: link,
+              category: cat.tag,
+              categoryLabel: cat.label,
+              image: image,
+            });
+          });
+
+          return posts;
+        }
+
+        /* =============================================
+           FORMAT DATE
+           ============================================= */
+        function formatDate(dateStr) {
+          if (!dateStr) return "";
+          var d = new Date(dateStr);
+          var months = [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ];
+          return (
+            months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
+          );
+        }
+
+        /* =============================================
+           ESTIMATE READ TIME
+           ============================================= */
+        function readTime(excerpt) {
+          // Rough estimate based on excerpt length
+          var words = excerpt.split(/\s+/).length;
+          var mins = Math.max(3, Math.ceil((words / 50) * 5));
+          return mins + " min read";
+        }
+
+        /* =============================================
+           BUILD FILTERS
+           ============================================= */
+        function buildFilters() {
+          var el = document.getElementById("intel-filters");
+          categories.forEach(function (cat) {
+            var btn = document.createElement("button");
+            btn.className =
+              "intel-filter" + (cat.tag === "all" ? " active" : "");
+            btn.textContent = cat.label;
+            btn.setAttribute("data-tag", cat.tag);
+            btn.onclick = function () {
+              activeFilter = cat.tag;
+              document.querySelectorAll(".intel-filter").forEach(function (b) {
+                b.classList.toggle(
+                  "active",
+                  b.getAttribute("data-tag") === cat.tag,
+                );
+              });
+              render();
+            };
+            el.appendChild(btn);
+          });
+
+          document
+            .getElementById("intel-sort")
+            .addEventListener("change", function () {
+              sortOrder = this.value;
+              render();
+            });
+        }
+
+        /* =============================================
+           RENDER POSTS
+           ============================================= */
+        function render() {
+          var filtered =
+            activeFilter === "all"
+              ? allPosts.slice()
+              : allPosts.filter(function (p) {
+                  return p.category === activeFilter;
+                });
+
+          // Sort
+          filtered.sort(function (a, b) {
+            var da = new Date(a.date || 0);
+            var db = new Date(b.date || 0);
+            return sortOrder === "newest" ? db - da : da - db;
+          });
+
+          // Featured post
+          var featEl = document.getElementById("intel-featured");
+          featEl.innerHTML = "";
+          if (filtered.length > 0) {
+            var fp = filtered[0];
+            var feat = document.createElement("a");
+            feat.className = "intel-featured";
+            feat.href = fp.url;
+            feat.target = "_blank";
+            feat.rel = "noopener";
+            feat.style.textDecoration = "none";
+
+            var imgContent = fp.image
+              ? '<img src="' +
+                fp.image +
+                '" alt="' +
+                fp.title +
+                '" loading="lazy" />'
+              : '<div class="intel-card-img-ph">' + fp.categoryLabel + "</div>";
+
+            feat.innerHTML =
+              '<div class="intel-feat-img"><div class="intel-feat-img-inner">' +
+              imgContent +
+              "</div></div>" +
+              '<div class="intel-feat-body">' +
+              '<div class="intel-feat-badge"><div class="intel-feat-badge-dot"></div><span class="intel-feat-badge-text">' +
+              fp.categoryLabel +
+              "</span></div>" +
+              '<div class="intel-feat-title">' +
+              fp.title +
+              "</div>" +
+              '<div class="intel-feat-excerpt">' +
+              fp.excerpt +
+              "</div>" +
+              '<div class="intel-feat-meta">' +
+              formatDate(fp.date) +
+              '<span class="intel-meta-sep">·</span>' +
+              readTime(fp.excerpt) +
+              '<span class="intel-meta-sep">·</span>Substack ↗' +
+              "</div>" +
+              "</div>";
+
+            featEl.appendChild(feat);
+          }
+
+          // Grid (skip featured post)
+          var gridEl = document.getElementById("intel-grid");
+          gridEl.innerHTML = "";
+          var gridPosts = filtered.slice(1);
+
+          if (gridPosts.length === 0 && filtered.length <= 1) {
+            if (filtered.length === 0) {
+              gridEl.innerHTML =
+                '<div class="intel-empty">No posts in this category yet.</div>';
+            }
+          } else {
+            gridPosts.forEach(function (p, i) {
+              var card = document.createElement("a");
+              card.className = "intel-card";
+              card.href = p.url;
+              card.target = "_blank";
+              card.rel = "noopener";
+              card.style.opacity = "0";
+              card.style.animation =
+                "fadeUp 0.4s ease " + Math.min(i * 0.06, 0.5) + "s forwards";
+
+              var imgHTML = p.image
+                ? '<img src="' +
+                  p.image +
+                  '" alt="' +
+                  p.title +
+                  '" loading="lazy" />'
+                : '<div class="intel-card-img-ph">' +
+                  p.categoryLabel +
+                  "</div>";
+
+              card.innerHTML =
+                '<div class="intel-card-img">' +
+                imgHTML +
+                "</div>" +
+                '<div class="intel-card-body">' +
+                '<div class="intel-card-cat">' +
+                p.categoryLabel +
+                "</div>" +
+                '<div class="intel-card-title">' +
+                p.title +
+                "</div>" +
+                '<div class="intel-card-excerpt">' +
+                p.excerpt +
+                "</div>" +
+                '<div class="intel-card-meta">' +
+                formatDate(p.date) +
+                '<span class="intel-meta-sep" style="margin:0 8px;color:var(--border-mid)">·</span>' +
+                readTime(p.excerpt) +
+                "</div>" +
+                "</div>";
+
+              gridEl.appendChild(card);
+            });
+          }
+
+          document.getElementById("intel-count").textContent =
+            filtered.length + " post" + (filtered.length !== 1 ? "s" : "");
+        }
+
+        /* =============================================
+           FETCH FROM SUBSTACK RSS
+           ============================================= */
+        function loadPosts() {
+          fetch(FEED_URL)
+            .then(function (response) {
+              if (!response.ok) throw new Error("RSS fetch failed");
+              return response.text();
+            })
+            .then(function (xml) {
+              allPosts = parseRSS(xml);
+              if (allPosts.length === 0) {
+                allPosts = fallbackPosts;
+              }
+              render();
+            })
+            .catch(function () {
+              // RSS failed — use fallback posts
+              allPosts = fallbackPosts;
+              render();
+            });
+        }
+
+        /* =============================================
+           INIT
+           ============================================= */
+        buildFilters();
+        loadPosts();
+      })();
+    </script>
   </body>
 </html>
