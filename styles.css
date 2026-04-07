@@ -1095,7 +1095,7 @@ footer p {
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
-  min-height: 580px;
+  min-height: 760px;
 }
 .contact-calendly-header {
   padding: 20px 24px;
@@ -1120,7 +1120,7 @@ footer p {
 }
 .contact-calendly iframe {
   width: 100%;
-  min-height: 540px;
+  min-height: 720px;
   border: none;
 }
 .contact-social {
@@ -1860,6 +1860,13 @@ footer p {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+  .contact-calendly {
+    min-height: 950px;
+  }
+  .contact-calendly iframe {
+    min-height: 910px;
+    height: 910px;
+  }
   .contact-cta-block {
     padding: 60px 20px;
   }
@@ -1870,6 +1877,13 @@ footer p {
 }
 
 @media (max-width: 480px) {
+  .contact-calendly {
+    min-height: 1050px;
+  }
+  .contact-calendly iframe {
+    min-height: 1010px;
+    height: 1010px;
+  }
   .mech-pills {
     flex-direction: column;
   }
