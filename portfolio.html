@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio — Thrill Wave</title>
+    <title>Portfolio — Thrill Wave | Research-Driven Video Production</title>
+    <meta
+      name="description"
+      content="Selected work from Thrill Wave. Research-driven video production for defense, government, healthcare, corporate, and entertainment organizations."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&family=IBM+Plex+Mono:wght@300;400;500&display=swap"
@@ -13,9 +17,251 @@
   </head>
   <body>
     <div id="site-nav"></div>
-    <section class="page-body"><p>Portfolio — update this later</p></section>
+
+    <!-- HERO -->
+    <section class="port-hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow mono">Selected Work</div>
+        <h1 class="hero-h1">The <strong>proof.</strong></h1>
+        <p class="hero-sub">
+          Every project started with a SITREP. Research first. Story second.
+          Camera third. Here's what came out the other side.
+        </p>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO GRID -->
+    <section style="border-top: 1px solid var(--border)">
+      <!-- FILTERS -->
+      <div class="port-filters" id="port-filters"></div>
+
+      <!-- GRID -->
+      <div class="port-grid" id="port-grid"></div>
+
+      <div class="port-count" id="port-count"></div>
+    </section>
+
+    <!-- CTA -->
     <div id="site-footer"></div>
+
     <script src="includes.js"></script>
     <script src="menu.js"></script>
+
+    <script>
+      (function () {
+        var projects = [
+          {
+            client: "Inter Tribal Council of Arizona",
+            title: "TEC Case Study — Reframed",
+            category: "Government & Tribal",
+            tag: "government",
+            featured: true,
+            desc: "Three engagements. Three subjects. Pre-production intelligence that changed the creative direction each time.",
+          },
+          {
+            client: "MedAire",
+            title: "Aviation Safety — Brand Film",
+            category: "Defense & Aerospace",
+            tag: "defense",
+            featured: false,
+            desc: "Repeat client. Brand film for a global aviation safety and medical services provider.",
+          },
+          {
+            client: "Boston Scientific",
+            title: "Physician Recruiting Series",
+            category: "Healthcare",
+            tag: "healthcare",
+            featured: false,
+            desc: "Recruitment campaign targeting physicians. Research identified trust barriers the previous vendor missed.",
+          },
+          {
+            client: "ITCA — WIC Nutrition",
+            title: "WIC Enrollment Campaign",
+            category: "Government & Tribal",
+            tag: "government",
+            featured: false,
+            desc: "Tribal mothers speaking direct to camera. No narration. No institutional framing. Enrollment increased.",
+          },
+          {
+            client: "State Farm",
+            title: "Internal Communications",
+            category: "Corporate",
+            tag: "corporate",
+            featured: false,
+            desc: "Internal video strategy for employee engagement across regional offices.",
+          },
+          {
+            client: "Relentless Beats",
+            title: "Decadence AZ — Event Film",
+            category: "Events & Entertainment",
+            tag: "events",
+            featured: true,
+            desc: "Full event coverage and post-event brand film for Arizona's largest NYE music festival.",
+          },
+          {
+            client: "Golf Digest",
+            title: "Branded Content Series",
+            category: "Brand & Media",
+            tag: "brand",
+            featured: false,
+            desc: "Multi-part branded content series. Distribution strategy built alongside production.",
+          },
+          {
+            client: "Uber",
+            title: "Driver Experience Campaign",
+            category: "Brand & Media",
+            tag: "brand",
+            featured: false,
+            desc: "Real drivers. Real stories. Observational production capturing the actual experience.",
+          },
+          {
+            client: "ITCA — Vaccine Education",
+            title: "Community Health Initiative",
+            category: "Government & Tribal",
+            tag: "government",
+            featured: false,
+            desc: "Vaccine education for communities with justified skepticism. Their own leaders, not outside authorities.",
+          },
+          {
+            client: "UBS",
+            title: "Investor Relations Film",
+            category: "Corporate",
+            tag: "corporate",
+            featured: false,
+            desc: "Executive visibility and investor relations content. Research-driven messaging framework.",
+          },
+          {
+            client: "Training Mask",
+            title: "Product Launch Film",
+            category: "Brand & Media",
+            tag: "brand",
+            featured: false,
+            desc: "Product launch video with athlete integration. Built distribution plan before production wrapped.",
+          },
+          {
+            client: "Gold Rush Music Festival",
+            title: "Gold Rush — Event Film",
+            category: "Events & Entertainment",
+            tag: "events",
+            featured: false,
+            desc: "Multi-day festival documentation and promotional content for following year's campaign.",
+          },
+          {
+            client: "Aura Identity Theft Protection",
+            title: "Brand Awareness Campaign",
+            category: "Corporate",
+            tag: "corporate",
+            featured: false,
+            desc: "Consumer trust campaign. Audience research surfaced messaging angles competitors hadn't touched.",
+          },
+          {
+            client: "MagMod",
+            title: "Product Film Series",
+            category: "Brand & Media",
+            tag: "brand",
+            featured: false,
+            desc: "Photography lighting equipment. Product films showing real photographers in real workflows.",
+          },
+          {
+            client: "ASAP AZ Spine & Pain",
+            title: "Patient Experience Series",
+            category: "Healthcare",
+            tag: "healthcare",
+            featured: false,
+            desc: "Patient testimonials and provider profiles. Research identified what prospective patients actually search for.",
+          },
+          {
+            client: "FirstBank",
+            title: "Community Banking Campaign",
+            category: "Brand & Media",
+            tag: "brand",
+            featured: false,
+            desc: "Community-focused banking campaign. Local stories, local faces, distributed through local channels.",
+          },
+        ];
+
+        var categories = [
+          { label: "All Work", tag: "all" },
+          { label: "Defense", tag: "defense" },
+          { label: "Government", tag: "government" },
+          { label: "Healthcare", tag: "healthcare" },
+          { label: "Corporate", tag: "corporate" },
+          { label: "Events", tag: "events" },
+          { label: "Brand", tag: "brand" },
+        ];
+
+        var activeFilter = "all";
+
+        function buildFilters() {
+          var el = document.getElementById("port-filters");
+          categories.forEach(function (cat) {
+            var btn = document.createElement("button");
+            btn.className =
+              "port-filter" + (cat.tag === "all" ? " active" : "");
+            btn.textContent = cat.label;
+            btn.setAttribute("data-tag", cat.tag);
+            btn.onclick = function () {
+              activeFilter = cat.tag;
+              document.querySelectorAll(".port-filter").forEach(function (b) {
+                b.classList.toggle(
+                  "active",
+                  b.getAttribute("data-tag") === cat.tag,
+                );
+              });
+              buildGrid();
+            };
+            el.appendChild(btn);
+          });
+        }
+
+        function buildGrid() {
+          var el = document.getElementById("port-grid");
+          el.innerHTML = "";
+          var filtered =
+            activeFilter === "all"
+              ? projects
+              : projects.filter(function (p) {
+                  return p.tag === activeFilter;
+                });
+
+          filtered.forEach(function (p, i) {
+            var card = document.createElement("div");
+            card.className = "port-card" + (p.featured ? " featured" : "");
+            card.style.opacity = "0";
+            card.style.animation =
+              "fadeUp 0.5s ease " + Math.min(i * 0.08, 0.6) + "s forwards";
+            card.innerHTML =
+              '<div class="port-thumb">' +
+              '<div class="port-thumb-inner">' +
+              '<span class="port-thumb-label">' +
+              p.client +
+              "</span>" +
+              "</div>" +
+              '<div class="port-thumb-gradient"></div>' +
+              '<div class="port-play"><div class="port-play-tri"></div></div>' +
+              "</div>" +
+              '<div class="port-info">' +
+              '<div class="port-category">' +
+              p.category +
+              "</div>" +
+              '<div class="port-title">' +
+              p.title +
+              "</div>" +
+              '<div class="port-client">' +
+              p.desc +
+              "</div>" +
+              "</div>";
+            el.appendChild(card);
+          });
+
+          document.getElementById("port-count").textContent =
+            filtered.length + " project" + (filtered.length !== 1 ? "s" : "");
+        }
+
+        buildFilters();
+        buildGrid();
+      })();
+    </script>
   </body>
 </html>

@@ -1023,6 +1023,189 @@ footer p {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
+/* === PORTFOLIO === */
+.port-hero {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 48px 72px;
+  position: relative;
+  overflow: hidden;
+}
+.port-hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--black);
+}
+.port-hero .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+.port-filters {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0;
+}
+.port-filter {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  background: none;
+  border: none;
+  padding: 14px 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+  position: relative;
+  white-space: nowrap;
+}
+.port-filter::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.port-filter:hover {
+  color: var(--white);
+}
+.port-filter.active {
+  color: var(--white);
+}
+.port-filter.active::after {
+  transform: scaleX(1);
+}
+.port-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.port-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: border-color 0.4s;
+}
+.port-card:hover {
+  border-color: var(--border-l);
+}
+.port-card.featured {
+  grid-column: 1 / -1;
+}
+.port-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--near-black);
+  overflow: hidden;
+}
+.port-thumb-inner {
+  width: 100%;
+  height: 100%;
+  background: var(--dark);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.port-card:hover .port-thumb-inner {
+  transform: scale(1.03);
+}
+.port-thumb-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(6, 6, 6, 0.95) 0%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.port-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(224, 96, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  opacity: 0;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+.port-card:hover .port-play {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.port-play-tri {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 9px 0 9px 16px;
+  border-color: transparent transparent transparent var(--pure);
+  margin-left: 3px;
+}
+.port-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  z-index: 2;
+}
+.port-category {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+.port-title {
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.port-client {
+  font-size: var(--fs-body);
+  color: var(--gray);
+}
+.port-thumb-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--border-mid);
+}
+.port-count {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-body);
+  color: var(--gray);
+  text-align: center;
+  margin-top: 48px;
+  letter-spacing: 0.08em;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
   .fm-cards {
@@ -1039,6 +1222,9 @@ footer p {
   }
   .mech-synth-grid {
     grid-template-columns: 1fr;
+  }
+  .port-grid {
+    gap: 16px;
   }
 }
 
@@ -1119,6 +1305,26 @@ footer p {
   }
   .mech-stream-label {
     width: 110px;
+  }
+  .port-hero {
+    min-height: 40vh;
+    padding: 0 20px 48px;
+  }
+  .port-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .port-card.featured {
+    grid-column: 1;
+  }
+  .port-filters {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 32px;
+  }
+  .port-filter {
+    padding: 12px 18px;
   }
   footer {
     flex-direction: column;
