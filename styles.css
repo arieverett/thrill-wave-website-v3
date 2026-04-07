@@ -1,5 +1,5 @@
 /* ============================================
-   THRILL WAVE â€” GLOBAL STYLES
+   THRILL WAVE — GLOBAL STYLES
    ============================================ */
 :root {
   /* Backgrounds */
@@ -13,7 +13,7 @@
   --border-l: #252525;
   --border-mid: #3a3a3a;
 
-  /* Text â€” only 3 colors */
+  /* Text — only 3 colors */
   --white: #eee;
   --pure: #fff;
   --gray: #b0b0b0;
@@ -23,7 +23,7 @@
   --orange-glow: rgba(224, 96, 0, 0.04);
   --orange-border: rgba(224, 96, 0, 0.1);
 
-  /* Font scale â€” 4 sizes only */
+  /* Font scale — 4 sizes only */
   --fs-title: clamp(36px, 4.5vw, 56px);
   --fs-h1: clamp(26px, 3vw, 42px);
   --fs-h2: 22px;
@@ -1095,7 +1095,7 @@ footer p {
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
-  min-height: 760px;
+  min-height: 920px;
 }
 .contact-calendly-header {
   padding: 20px 24px;
@@ -1120,7 +1120,7 @@ footer p {
 }
 .contact-calendly iframe {
   width: 100%;
-  min-height: 720px;
+  min-height: 880px;
   border: none;
 }
 .contact-social {
