@@ -1179,6 +1179,7 @@ footer p {
 .contact-calendly-header {
   padding: 20px 28px;
   border-bottom: 1px solid var(--border);
+  background: var(--near-black);
   display: flex;
   align-items: center;
   gap: 10px;
