@@ -32,11 +32,11 @@
       </div>
     </section>
 
-    <!-- CONTACT LAYOUT -->
+    <!-- CONTACT INFO + MAP -->
     <section style="border-top: 1px solid var(--border)">
       <div class="contact-layout">
         <!-- LEFT: CONTACT METHODS -->
-        <div>
+        <div class="contact-left">
           <div class="contact-methods">
             <div class="contact-method">
               <div class="contact-method-label">Email</div>
@@ -54,8 +54,8 @@
                 <a href="tel:+14802697155">480-269-7155</a>
               </div>
               <div class="contact-method-note">
-                Call us or shoot us a text. We're available during business
-                hours, Arizona time.
+                Call us or shoot us a text. Available during business hours,
+                Arizona time.
               </div>
             </div>
 
@@ -68,7 +68,7 @@
               </div>
             </div>
 
-            <div class="contact-method" style="border-bottom: none">
+            <div class="contact-method">
               <div class="contact-method-label">Follow</div>
               <div class="contact-social">
                 <a
@@ -104,29 +104,31 @@
           </div>
         </div>
 
-        <!-- RIGHT: CALENDLY EMBED -->
-        <div class="contact-calendly">
-          <div class="contact-calendly-header">
-            <div class="contact-calendly-dot"></div>
-            <span class="contact-calendly-label"
-              >Book a 30-Minute Video Consult</span
-            >
-          </div>
-          <!--
-            UPDATE THIS URL with your actual Calendly link.
-            Find it at: calendly.com > Your Event > Share > Copy Link
-            Common formats:
-              https://calendly.com/thrillwave/30min
-              https://calendly.com/chris-kuzman/30-minute-video-consult
-          -->
+        <!-- RIGHT: MAP -->
+        <div class="contact-right">
           <iframe
-            src="https://calendly.com/christhrillwave/30-minute-meeting-clone?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0c0c0c&text_color=b0b0b0&primary_color=e06000"
+            class="contact-map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d213373.94354492173!2d-112.07404565!3d33.49417045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872b0929a8374f29%3A0xf5f8a4dbfcb78f!2sScottsdale%2C%20AZ!5e0!3m2!1sen!2sus!4v1"
             loading="lazy"
-            scrolling="no"
-            style="height: 880px"
-            title="Schedule a call with Thrill Wave"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Thrill Wave — Scottsdale, AZ"
           ></iframe>
         </div>
+      </div>
+
+      <!-- CALENDLY: FULL WIDTH BELOW -->
+      <div class="contact-calendly-section">
+        <div class="contact-calendly-header">
+          <div class="contact-calendly-dot"></div>
+          <span class="contact-calendly-label"
+            >Book a 30-Minute Video Consult</span
+          >
+        </div>
+        <iframe
+          src="https://calendly.com/christhrillwave/30-minute-meeting-clone?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0c0c0c&text_color=b0b0b0&primary_color=e06000"
+          loading="lazy"
+          title="Schedule a call with Thrill Wave"
+        ></iframe>
       </div>
     </section>
 

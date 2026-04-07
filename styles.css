@@ -1045,9 +1045,22 @@ footer p {
 }
 .contact-layout {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 48px;
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 48px;
+}
+.contact-left {
+  background: var(--near-black);
+  padding: 40px 36px;
+}
+.contact-right {
+  background: var(--near-black);
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
 }
 .contact-methods {
   display: flex;
@@ -1055,14 +1068,17 @@ footer p {
   gap: 0;
 }
 .contact-method {
-  padding: 28px 0;
+  padding: 24px 0;
   border-bottom: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 .contact-method:first-child {
   padding-top: 0;
+}
+.contact-method:last-child {
+  border-bottom: none;
 }
 .contact-method-label {
   font-family: "IBM Plex Mono", monospace;
@@ -1090,15 +1106,74 @@ footer p {
   color: var(--gray);
   line-height: 1.5;
 }
-.contact-calendly {
+.contact-social {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-top: 4px;
+}
+.contact-social-link {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-body);
+  letter-spacing: 0.06em;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.3s;
+  text-transform: uppercase;
+}
+.contact-social-link:hover {
+  color: var(--white);
+}
+.contact-map {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  filter: grayscale(100%) invert(92%) contrast(83%) brightness(0.6) sepia(15%)
+    hue-rotate(340deg);
+}
+.contact-map-pin {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.contact-map-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--orange);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 4px rgba(224, 96, 0, 0.25),
+    0 0 0 8px rgba(224, 96, 0, 0.1);
+}
+.contact-map-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(6, 6, 6, 0.85);
+  padding: 3px 8px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* Calendly full-width section */
+.contact-calendly-section {
   background: var(--near-black);
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
-  min-height: 920px;
 }
 .contact-calendly-header {
-  padding: 20px 24px;
+  padding: 20px 28px;
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -1118,28 +1193,11 @@ footer p {
   text-transform: uppercase;
   color: var(--gray);
 }
-.contact-calendly iframe {
+.contact-calendly-section iframe {
   width: 100%;
-  min-height: 880px;
+  height: 700px;
   border: none;
-}
-.contact-social {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding-top: 28px;
-}
-.contact-social-link {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: var(--fs-body);
-  letter-spacing: 0.06em;
-  color: var(--gray);
-  text-decoration: none;
-  transition: color 0.3s;
-  text-transform: uppercase;
-}
-.contact-social-link:hover {
-  color: var(--white);
+  display: block;
 }
 .contact-cta-block {
   text-align: center;
@@ -1858,14 +1916,12 @@ footer p {
   }
   .contact-layout {
     grid-template-columns: 1fr;
-    gap: 40px;
   }
-  .contact-calendly {
-    min-height: 950px;
+  .contact-right {
+    min-height: 300px;
   }
-  .contact-calendly iframe {
-    min-height: 910px;
-    height: 910px;
+  .contact-calendly-section iframe {
+    height: 950px;
   }
   .contact-cta-block {
     padding: 60px 20px;
@@ -1877,12 +1933,8 @@ footer p {
 }
 
 @media (max-width: 480px) {
-  .contact-calendly {
-    min-height: 1050px;
-  }
-  .contact-calendly iframe {
-    min-height: 1010px;
-    height: 1010px;
+  .contact-calendly-section iframe {
+    height: 1050px;
   }
   .mech-pills {
     flex-direction: column;
