@@ -71,7 +71,7 @@ nav {
   text-decoration: none;
 }
 .nav-wordmark img {
-  height: 16px;
+  height: 36px;
   opacity: 0.85;
 }
 .nav-links {
@@ -974,9 +974,8 @@ footer p {
   color: var(--gray);
 }
 .f-logo img {
-  height: 16px;
-  opacity: 0.4;
-  filter: sepia(1) saturate(3) hue-rotate(346deg) brightness(0.8);
+  height: 24px;
+  opacity: 0.5;
 }
 
 /* === TEMPLATE PAGE === */
