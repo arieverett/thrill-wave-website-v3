@@ -8,7 +8,7 @@
     </title>
     <meta
       name="description"
-      content="Every Thrill Wave engagement starts with a SITREP. We ingest your full data environment, synthesize intelligence with LLMs, and execute production grounded in research."
+      content="Every Thrill Wave engagement starts with a SITREP. We run open-source intelligence across your entire public footprint and surface the gap between how the world sees you and how you see yourself."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
@@ -47,9 +47,11 @@
         <div class="hero-eyebrow mono">Our Methodology</div>
         <h1 class="hero-h1">The <strong>SITREP.</strong></h1>
         <p class="hero-sub">
-          Before we unpack a camera, we ingest your full data environment,
-          synthesize it with custom LLM pipelines, and produce the single
-          highest-leverage story your organization should tell right now.
+          We run open-source intelligence across your entire public
+          footprint — social platforms, review sites, search behavior, news
+          coverage, competitor positioning — and surface the gap between how
+          the world sees you and how you see yourself. That gap becomes the
+          brief.
         </p>
         <div class="hero-ctas">
           <a href="mailto:hi@thrillwave.com" class="btn-w">Book a Call</a>
@@ -107,8 +109,9 @@
             <div class="tri-name">Ingest</div>
             <div class="tri-divider"></div>
             <div class="tri-desc">
-              Internal data, audience intelligence, public sentiment, market
-              signals, competitive positioning, geopolitical context.
+              Social platforms, review sites, search behavior, news coverage,
+              competitive positioning, regulatory and political landscape,
+              internal data.
             </div>
           </div>
         </div>
@@ -119,8 +122,9 @@
             <div class="tri-name">Synthesize</div>
             <div class="tri-divider"></div>
             <div class="tri-desc">
-              LLMs on the full data set. Blind spots, trust gaps, narrative
-              opportunities. One highest-leverage story.
+              Cross-platform analysis. Platform hierarchy, audience rhetoric,
+              perception gaps, failure mode diagnosis. One highest-leverage
+              story.
             </div>
           </div>
         </div>
@@ -131,8 +135,9 @@
             <div class="tri-name">Execute</div>
             <div class="tri-divider"></div>
             <div class="tri-desc">
-              Real environments, real people, observational production.
-              Distribution built alongside, not after.
+              Full intelligence brief with source data, story
+              recommendations, and a production-ready distribution plan.
+              Every decision backed by evidence.
             </div>
           </div>
         </div>
@@ -174,9 +179,9 @@
           ><span class="mech-stage-name">Ingest</span>
         </div>
         <p class="mech-stage-desc">
-          Before we unpack a camera, we ingest your full data environment.
-          Public records, news archives, social listening, competitor media,
-          audience analytics, cultural context.
+          We scan your entire public footprint across 15 intelligence sources
+          simultaneously. Social platforms, review sites, news coverage, search
+          behavior, competitor positioning, workforce signals.
         </p>
         <div class="mech-viz">
           <div class="mech-streams" id="mech-streams"></div>
@@ -190,9 +195,10 @@
           ><span class="mech-stage-name">Synthesize</span>
         </div>
         <p class="mech-stage-desc">
-          LLMs on the full data set. We map blind spots, trust gaps, and
-          narrative opportunities your competitors missed. The output: the
-          single highest-leverage story.
+          Every source cross-referenced. We rank platforms by real engagement
+          density, analyze actual audience rhetoric from comments, detect
+          contradictions across channels, and diagnose which failure mode your
+          current media strategy is at risk of.
         </p>
         <div class="mech-viz">
           <div class="mech-synth-grid" id="mech-synth"></div>
@@ -213,7 +219,7 @@
                   text-transform: uppercase;
                   color: var(--gray);
                 "
-                >Narrative confidence</span
+                >Intelligence coverage</span
               >
               <span
                 class="mono"
@@ -235,8 +241,10 @@
           ><span class="mech-stage-name">Execute</span>
         </div>
         <p class="mech-stage-desc">
-          Real environments, real people, observational production. Distribution
-          plan built alongside production — not tacked on after delivery.
+          The SITREP delivers a full intelligence brief — not a summary deck.
+          Source data, competitive mapping, story recommendations with target
+          audiences, and a distribution strategy built from where your audience
+          actually lives.
         </p>
         <div class="mech-viz">
           <div class="mech-exec-timeline" id="mech-exec"></div>
@@ -250,67 +258,67 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var streams = [
-          { label: "Public records", w: 82 },
-          { label: "News archives", w: 67 },
-          { label: "Social data", w: 91 },
-          { label: "Competitors", w: 55 },
-          { label: "Audience", w: 78 },
-          { label: "Cultural ctx", w: 44 },
-          { label: "Geopolitical", w: 36 },
-          { label: "Internal docs", w: 73 },
+          { label: "Social sentiment", w: 91 },
+          { label: "News coverage", w: 82 },
+          { label: "Search behavior", w: 78 },
+          { label: "Review intelligence", w: 67 },
+          { label: "Competitor positioning", w: 72 },
+          { label: "Workforce signals", w: 55 },
+          { label: "Regulatory landscape", w: 44 },
+          { label: "Internal data", w: 36 },
         ];
         var tags = [
-          "sentiment analysis",
-          "narrative gaps",
-          "trust scoring",
-          "audience segmentation",
-          "competitive positioning",
-          "perception mapping",
-          "signal detection",
-          "risk assessment",
+          "Reddit",
+          "YouTube",
+          "Instagram",
+          "LinkedIn",
+          "Google Reviews",
+          "TikTok",
+          "Google Search",
+          "Twitter / X",
         ];
         var synthCards = [
           {
-            label: "Trust gaps identified",
-            val: "7",
-            sub: "Across 3 audience segments",
+            label: "Platforms ranked",
+            val: "11",
+            sub: "Primary channel identified by engagement density",
           },
           {
-            label: "Narrative opportunities",
-            val: "12",
-            sub: "4 high-leverage, 8 supporting",
+            label: "Perception gaps",
+            val: "6",
+            sub: "Mismatches between public view and org messaging",
           },
           {
-            label: "Competitor blind spots",
-            val: "3",
-            sub: "Unexploited angles",
+            label: "Failure modes assessed",
+            val: "4",
+            sub: "Gut instinct · Copycat · Vendor-pitched · No distribution",
           },
           {
-            label: "Recommended story",
-            val: "1",
-            sub: "Highest probability of shifting perception",
+            label: "Story recommendations",
+            val: "3–5",
+            sub: "With target audiences and distribution strategy",
           },
         ];
         var execSteps = [
           {
-            phase: "Pre-production",
-            text: "Location scouting, subject coordination, shot planning based on SITREP findings",
+            phase: "Intelligence brief",
+            text: "Full landscape analysis with competitive mapping, source data, and platform hierarchy",
             status: "Complete",
           },
           {
-            phase: "Production",
-            text: "Real environments, observational capture, technically demanding where the story demands it",
+            phase: "Story recommendations",
+            text: "3–5 productions with formats, target audiences, and evidence backing each one",
             status: "Complete",
           },
           {
-            phase: "Post-production",
-            text: "Edit, color, sound design — every creative decision traced back to the intelligence",
-            status: "In progress",
+            phase: "Production plan",
+            text: "Shot plan, subject coordination, and creative direction grounded in SITREP findings",
+            status: "Complete",
           },
           {
-            phase: "Distribution",
-            text: "Audience identification, platform cuts, paid + organic strategy built alongside production",
-            status: "Queued",
+            phase: "Distribution strategy",
+            text: "Platform-specific plan built from where your audience actually lives",
+            status: "Complete",
           },
         ];
 
@@ -387,7 +395,7 @@
           var c = document.getElementById("mech-exec");
           if (!c) return;
           c.innerHTML = "";
-          var statuses = ["done", "done", "active", "pending"];
+          var statuses = ["done", "done", "done", "done"];
           execSteps.forEach(function (s, i) {
             var d = document.createElement("div");
             d.className = "mech-exec-step";
