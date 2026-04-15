@@ -91,7 +91,7 @@ What the organization knows about itself that isn't public. Requires client acce
 
 Described in organization-agnostic terms: the information the organization already has but hasn't connected to its story yet. What they know internally that the outside world doesn't see. Institutional knowledge, feedback, data, and conversations that live inside their walls and never reach the audience.
 
-This framing works across all verticals: corporate, government, tribal, nonprofit, defense, healthcare.
+This framing works across all verticals: corporate, government, nonprofit, defense, healthcare.
 
 ### The Output
 
