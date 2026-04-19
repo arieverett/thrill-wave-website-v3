@@ -329,10 +329,8 @@ section {
   transition: color 0.3s;
 }
 .fm-title {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-size: var(--fs-body);
+  font-weight: 600;
   color: var(--gray);
   margin-bottom: 8px;
   transition: color 0.3s;
