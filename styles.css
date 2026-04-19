@@ -1691,7 +1691,7 @@ footer p {
 }
 .port-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 .port-card {
@@ -1706,7 +1706,7 @@ footer p {
   border-color: var(--border-l);
 }
 .port-card.featured {
-  grid-column: 1 / -1;
+  grid-column: auto;
 }
 .port-thumb {
   position: relative;
@@ -1802,12 +1802,7 @@ footer p {
   color: var(--border-mid);
 }
 .port-count {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: var(--fs-body);
-  color: var(--gray);
-  text-align: center;
-  margin-top: 48px;
-  letter-spacing: 0.08em;
+  display: none;
 }
 
 /* === MONO FONT SIZE OVERRIDE === */
@@ -1844,6 +1839,7 @@ footer p, .intel-filter, .intel-sort,
     grid-template-columns: 1fr;
   }
   .port-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
   .intel-grid {
