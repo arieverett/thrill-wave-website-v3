@@ -1188,20 +1188,31 @@ footer p {
 .contact-calendly-wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-  margin-top: 48px;
+  gap: 1px;
+  background: var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 0;
 }
-.contact-calendly-col-right {
+.contact-calendly-col-text {
+  background: var(--near-black);
+  padding: 40px 36px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 6px;
 }
-.contact-calendly-col-right p {
-  font-size: var(--fs-body);
-  font-weight: 300;
-  color: var(--gray);
-  line-height: 1.9;
+.contact-calendly-col-cal {
+  background: var(--near-black);
+  overflow: hidden;
+  position: relative;
+}
+.contact-calendly-col-cal iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 700px;
+  border: none;
+  display: block;
 }
 
 /* Calendly full-width section */
@@ -1986,10 +1997,9 @@ footer p, .intel-filter, .intel-sort,
   }
   .contact-calendly-wrap {
     grid-template-columns: 1fr;
-    gap: 32px;
   }
-  .contact-calendly-section iframe {
-    height: 950px;
+  .contact-calendly-col-cal iframe {
+    min-height: 950px;
   }
   .contact-cta-block {
     padding: 60px 20px;
