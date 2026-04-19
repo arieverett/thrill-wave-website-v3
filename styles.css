@@ -28,6 +28,7 @@
   --fs-h1: clamp(26px, 3vw, 42px);
   --fs-h2: 22px;
   --fs-body: 24px;
+  --fs-mono: 16px;
 }
 
 * {
@@ -1779,6 +1780,22 @@ footer p {
   letter-spacing: 0.08em;
 }
 
+/* === MONO FONT SIZE OVERRIDE === */
+.hero-eyebrow, .nav-link, .nav-cta, .btn-w, .btn-g,
+.ticker-item, .s-label, .mech-pill, .mech-counter,
+.mech-stream-label, .mech-stream-val, .mech-tag,
+.mech-synth-label, .mech-exec-phase, .mech-exec-status,
+.v-tile p, .vid-ph span, .cta-contact,
+footer p, .intel-filter, .intel-sort,
+.intel-feat-badge-text, .intel-feat-meta,
+.intel-card-cat, .intel-card-meta, .intel-count,
+.intel-subscribe-btn, .intel-loading,
+.port-filter, .port-category, .port-thumb-label, .port-count,
+.contact-method-label, .contact-social-link, .contact-calendly-label,
+.page-body p, .fm-detail-label {
+  font-size: var(--fs-mono);
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
   .fm-cards {
@@ -1812,7 +1829,8 @@ footer p {
 
 @media (max-width: 768px) {
   :root {
-    --fs-body: 15px;
+    --fs-body: 20px;
+    --fs-mono: 14px;
     --fs-h2: 20px;
   }
 
