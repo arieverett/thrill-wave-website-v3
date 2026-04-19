@@ -6,20 +6,20 @@ What the Thrill Wave website needs to do, page by page, informed by how prospect
 
 ```
 Cold email lands (Sales Machine)
-    →
-Prospect is curious → visits thrillwave.com
-    →
+    ↓
+Prospect is curious — visits thrillwave.com
+    ↓
 Website confirms: these people are serious, they do real work, they actually researched me
-    →
+    ↓
 Prospect replies to the email or books a call
-    →
+    ↓
 20-minute discovery call (Chris)
-    →
-Paid SITREP brief ($5K-$10K) → the entry point, not a freebie
-    →
-SITREP reveals the gap → client sees exactly what story they should tell and why
-    →
-Production contract ($25K-$300K) → the obvious next step after seeing the SITREP
+    ↓
+Paid SITREP brief ($5K-$10K) — the entry point, not a freebie
+    ↓
+SITREP reveals the gap — client sees exactly what story they should tell and why
+    ↓
+Production contract ($25K-$300K) — the obvious next step after seeing the SITREP
 ```
 
 The website sits between "curious" and "replies to the email." Its job is to remove doubt, not to close the sale. The email already did the hard part — it showed the prospect something specific about their org. The website just needs to prove Thrill Wave is the real deal.
