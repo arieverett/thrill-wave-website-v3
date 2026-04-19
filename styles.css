@@ -1149,8 +1149,7 @@ footer p {
   height: 100%;
   border: none;
   display: block;
-  filter: grayscale(100%) invert(92%) contrast(83%) brightness(0.6) sepia(15%)
-    hue-rotate(340deg);
+  filter: grayscale(60%) contrast(90%) brightness(1.1);
 }
 .contact-map-pin {
   position: absolute;
@@ -1183,6 +1182,16 @@ footer p {
   padding: 3px 8px;
   border-radius: 3px;
   white-space: nowrap;
+}
+
+/* Calendly intro text */
+.contact-calendly-intro {
+  font-size: var(--fs-body);
+  font-weight: 300;
+  color: var(--gray);
+  line-height: 1.8;
+  max-width: 620px;
+  margin: 48px 0 24px;
 }
 
 /* Calendly full-width section */
