@@ -27,7 +27,7 @@
   --fs-title: clamp(36px, 4.5vw, 56px);
   --fs-h1: clamp(26px, 3vw, 42px);
   --fs-h2: 22px;
-  --fs-body: 18px;
+  --fs-body: 20px;
 }
 
 * {
