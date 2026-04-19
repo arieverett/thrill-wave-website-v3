@@ -99,6 +99,7 @@ nav {
   color: var(--pure);
   background: var(--orange);
   padding: 10px 24px;
+  border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s;
 }
@@ -186,6 +187,7 @@ nav {
   color: var(--pure);
   background: var(--orange);
   padding: 13px 30px;
+  border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s;
 }
