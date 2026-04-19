@@ -1184,14 +1184,24 @@ footer p {
   white-space: nowrap;
 }
 
-/* Calendly intro text */
-.contact-calendly-intro {
+/* Calendly two-column layout */
+.contact-calendly-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-top: 48px;
+}
+.contact-calendly-col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contact-calendly-col-right p {
   font-size: var(--fs-body);
   font-weight: 300;
   color: var(--gray);
-  line-height: 1.8;
-  max-width: 620px;
-  margin: 48px 0 24px;
+  line-height: 1.9;
 }
 
 /* Calendly full-width section */
@@ -1224,11 +1234,8 @@ footer p {
   color: var(--gray);
 }
 .contact-calendly-section iframe {
-  width: calc(100% + 280px);
-  margin-left: -140px;
-  height: 840px;
-  margin-top: -70px;
-  margin-bottom: -70px;
+  width: 100%;
+  height: 700px;
   border: none;
   display: block;
 }
@@ -1977,12 +1984,12 @@ footer p, .intel-filter, .intel-sort,
     flex-wrap: wrap;
     gap: 16px;
   }
+  .contact-calendly-wrap {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
   .contact-calendly-section iframe {
-    width: calc(100% + 80px);
-    margin-left: -40px;
-    height: 1050px;
-    margin-top: -40px;
-    margin-bottom: -40px;
+    height: 950px;
   }
   .contact-cta-block {
     padding: 60px 20px;
