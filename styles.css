@@ -27,7 +27,7 @@
   --fs-title: clamp(36px, 4.5vw, 56px);
   --fs-h1: clamp(26px, 3vw, 42px);
   --fs-h2: 22px;
-  --fs-body: 16px;
+  --fs-body: 18px;
 }
 
 * {
@@ -71,7 +71,7 @@ nav {
   text-decoration: none;
 }
 .nav-wordmark img {
-  height: 48px;
+  height: 56px;
   opacity: 0.85;
 }
 .nav-links {
@@ -371,8 +371,9 @@ section {
 }
 .fm-detail-inner.active {
   display: flex;
-  gap: 20px;
-  padding: 24px;
+  flex-direction: column;
+  gap: 0;
+  padding: 28px;
 }
 @keyframes fadeUp {
   from {
@@ -385,15 +386,31 @@ section {
   }
 }
 .fm-detail-left {
-  flex: 1;
+  width: 100%;
   min-width: 0;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
 }
 .fm-detail-right {
-  width: 260px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  flex-shrink: unset;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 32px;
+  row-gap: 0;
+  align-items: start;
+}
+.fm-detail-right .fm-detail-label {
+  grid-column: 1 / -1;
+  margin-bottom: 4px;
+}
+.fm-detail-right > div:last-child {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
+  margin-top: 16px;
 }
 .fm-detail-label {
   font-family: "IBM Plex Mono", monospace;
