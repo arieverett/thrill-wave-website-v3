@@ -27,7 +27,7 @@
   --fs-title: clamp(36px, 4.5vw, 56px);
   --fs-h1: clamp(26px, 3vw, 42px);
   --fs-h2: 22px;
-  --fs-body: 20px;
+  --fs-body: 24px;
 }
 
 * {
@@ -72,7 +72,7 @@ nav {
 }
 .nav-wordmark img {
   height: 56px;
-  opacity: 0.85;
+  opacity: 1;
 }
 .nav-links {
   display: flex;
@@ -871,6 +871,13 @@ section {
 .proof {
   border-top: 1px solid var(--border);
 }
+.proof-outcomes-hdr {
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  color: var(--white);
+  margin: 40px 0 8px;
+  letter-spacing: -0.01em;
+}
 .proof-hdr {
   margin-bottom: 48px;
 }
@@ -935,7 +942,7 @@ section {
 }
 .cta-logo img {
   height: 72px;
-  opacity: 0.6;
+  opacity: 1;
 }
 .cta-h2 {
   font-size: var(--fs-h1);
@@ -956,7 +963,7 @@ section {
   font-size: var(--fs-body);
   color: var(--gray);
   letter-spacing: 0.06em;
-  margin-top: 18px;
+  margin-top: 36px;
 }
 .cta-contact a {
   color: var(--white);
@@ -983,8 +990,8 @@ footer p {
   color: var(--gray);
 }
 .f-logo img {
-  height: 24px;
-  opacity: 0.5;
+  height: 40px;
+  opacity: 1;
 }
 
 /* === TEMPLATE PAGE === */
