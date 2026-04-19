@@ -57,6 +57,7 @@
             category: "Government",
             tag: "government",
             featured: true,
+            vimeoId: "1175739079",
             desc: "Three engagements. Three subjects. Pre-production intelligence that changed the creative direction each time.",
           },
           {
@@ -231,15 +232,14 @@
             card.style.opacity = "0";
             card.style.animation =
               "fadeUp 0.5s ease " + Math.min(i * 0.08, 0.6) + "s forwards";
+            var thumbContent = p.vimeoId
+              ? '<iframe src="https://player.vimeo.com/video/' + p.vimeoId + '?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="' + p.title + '"></iframe>'
+              : '<div class="port-thumb-inner"><span class="port-thumb-label">' + p.client + '</span></div><div class="port-play"><div class="port-play-tri"></div></div>';
+
             card.innerHTML =
               '<div class="port-thumb">' +
-              '<div class="port-thumb-inner">' +
-              '<span class="port-thumb-label">' +
-              p.client +
-              "</span>" +
-              "</div>" +
+              thumbContent +
               '<div class="port-thumb-gradient"></div>' +
-              '<div class="port-play"><div class="port-play-tri"></div></div>' +
               "</div>" +
               '<div class="port-info">' +
               '<div class="port-category">' +
