@@ -61,8 +61,6 @@ SITREP can be sold standalone ($5K-$10K) or bundled as the discovery phase of a 
 ### Defense / Aerospace
 "Recruitment content that looks like every other defense contractor won't solve your talent pipeline problem. We figure out what the workforce is actually saying about you online — then we build media that speaks to reality, not the brochure."
 
-### Tribal Nations
-"Your stories have been told by outsiders for too long. We build the intelligence layer first — what's being said, where it's being said, who's listening — so the media we create actually reaches the people who need to hear it."
 
 ### NGOs
 "You're doing work that matters in places most people can't find on a map. Documentary-grade storytelling that cuts through the noise, grounded in intelligence about what your audience actually cares about."

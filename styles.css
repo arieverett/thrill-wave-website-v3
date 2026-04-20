@@ -1039,6 +1039,9 @@ html[data-theme="light"] .client-ticker-wrap::before {
 html[data-theme="light"] .client-ticker-wrap::after {
   background: linear-gradient(to left, #f3f3f3, transparent);
 }
+html[data-theme="light"] .client-ticker-label {
+  color: rgba(0, 0, 0, 0.3);
+}
 html[data-theme="light"] .client-logo {
   filter: grayscale(1) invert(1) brightness(0.15) opacity(0.55);
 }
