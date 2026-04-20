@@ -72,26 +72,21 @@ html[data-theme="light"] .tri-num {
   color: rgba(0, 0, 0, 0.18);
 }
 
-/* Remove text-shadows on solid-background hero sections in light mode */
+/* Homepage video hero — always white text, no shadows, both modes */
+.hero-video .hero-h1 {
+  color: #ffffff;
+}
+.hero-video .hero-h1 strong {
+  color: #ffffff;
+}
+.hero-video .hero-sub {
+  color: rgba(255, 255, 255, 0.85);
+}
+/* Solid-background hero sections in light mode — no shadows */
 html[data-theme="light"] .hero-eyebrow,
 html[data-theme="light"] .hero-h1,
 html[data-theme="light"] .hero-sub {
   text-shadow: none;
-}
-/* Restore text-shadow AND white color on homepage video hero */
-html[data-theme="light"] .hero-video .hero-eyebrow {
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
-}
-html[data-theme="light"] .hero-video .hero-h1 {
-  color: #ffffff;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.6);
-}
-html[data-theme="light"] .hero-video .hero-h1 strong {
-  color: #ffffff;
-}
-html[data-theme="light"] .hero-video .hero-sub {
-  color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
 }
 
 /* Portfolio thumbnail overlay — keep text white over dark thumbnails */
@@ -233,7 +228,6 @@ nav {
   margin-bottom: 32px;
   opacity: 0;
   animation: up 1s ease 0.3s forwards;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 .hero-h1 {
   font-size: var(--fs-title);
@@ -244,7 +238,6 @@ nav {
   letter-spacing: -0.03em;
   opacity: 0;
   animation: up 1s ease 0.5s forwards;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.7);
 }
 .hero-h1 strong {
   font-weight: 700;
@@ -259,7 +252,6 @@ nav {
   margin-bottom: 44px;
   opacity: 0;
   animation: up 1s ease 0.7s forwards;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 .hero-ctas {
   display: flex;
@@ -961,9 +953,17 @@ section {
   background: #0a0a0a;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 28px 0;
+  padding: 24px 0 28px;
   overflow: hidden;
   position: relative;
+}
+.client-ticker-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  padding: 0 0 16px 40px;
 }
 /* Fade edges */
 .client-ticker-wrap::before,
@@ -1013,6 +1013,27 @@ section {
 @keyframes client-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+/* Light mode ticker — white background, dark logos */
+html[data-theme="light"] .client-ticker-wrap {
+  background: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+html[data-theme="light"] .client-ticker-wrap::before {
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+html[data-theme="light"] .client-ticker-wrap::after {
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+html[data-theme="light"] .client-ticker-label {
+  color: rgba(0, 0, 0, 0.3);
+}
+html[data-theme="light"] .client-logo {
+  filter: grayscale(1) invert(1) brightness(0.15) opacity(0.55);
+}
+html[data-theme="light"] .client-logo:hover {
+  filter: grayscale(1) invert(1) brightness(0.15) opacity(0.85);
 }
 
 /* === PROOF === */
