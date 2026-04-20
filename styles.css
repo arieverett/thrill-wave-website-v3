@@ -964,15 +964,16 @@ section {
 .client-ticker-section {
   background: var(--near-black);
   border-top: 1px solid var(--border);
+  padding-bottom: 40px;
 }
 .client-ticker-label {
   font-family: "Archivo", sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--white);
-  padding: 40px 48px 20px;
+  padding: 40px 48px 24px;
 }
 .client-ticker-wrap {
   background: #0a0a0a;
