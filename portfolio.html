@@ -158,6 +158,10 @@
               ? '<div class="port-thumb-inner" style="background-image:url(' + thumbnail + ');background-size:cover;background-position:center;"></div>'
               : '<div class="port-thumb-inner"><span class="port-thumb-label">' + p.client + "</span></div>";
 
+            var labelParts = p.label.split(" \u2014 ");
+            var clientPart = labelParts[0] || p.label;
+            var namePart = labelParts[1] || "";
+
             card.innerHTML =
               '<div class="port-thumb">' +
               thumbInner +
@@ -165,7 +169,10 @@
               '<div class="port-play"><div class="port-play-tri"></div></div>' +
               '<div class="port-info">' +
               '<div class="port-category">' + (TAG_LABELS[p.tag] || p.tag) + '</div>' +
-              '<div class="port-title">' + p.label + '</div>' +
+              '<div class="port-title">' +
+              '<span class="port-title-client">' + clientPart + '</span>' +
+              (namePart ? '<span class="port-title-name">' + namePart + '</span>' : '') +
+              '</div>' +
               '</div>' +
               "</div>";
 
