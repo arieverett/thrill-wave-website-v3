@@ -26,11 +26,10 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
     resize();
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", resize); /* resize on window change only, not per frame */
     var state = drawFn.setup(W, H);
     (function loop() {
-      resize();
-      drawFn.draw(ctx, W, H, state);
+      drawFn.draw(ctx, W, H, state); /* no resize() here — that caused infinite expansion */
       requestAnimationFrame(loop);
     })();
   }

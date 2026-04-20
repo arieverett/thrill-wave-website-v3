@@ -78,10 +78,21 @@ html[data-theme="light"] .hero-h1,
 html[data-theme="light"] .hero-sub {
   text-shadow: none;
 }
-/* Restore text-shadow on homepage video hero only */
-html[data-theme="light"] .hero-video .hero-eyebrow { text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
-html[data-theme="light"] .hero-video .hero-h1      { text-shadow: 0 2px 16px rgba(0,0,0,0.6); }
-html[data-theme="light"] .hero-video .hero-sub     { text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
+/* Restore text-shadow AND white color on homepage video hero */
+html[data-theme="light"] .hero-video .hero-eyebrow {
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+html[data-theme="light"] .hero-video .hero-h1 {
+  color: #ffffff;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+}
+html[data-theme="light"] .hero-video .hero-h1 strong {
+  color: #ffffff;
+}
+html[data-theme="light"] .hero-video .hero-sub {
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
 
 /* Portfolio thumbnail overlay — keep text white over dark thumbnails */
 html[data-theme="light"] .port-title {
