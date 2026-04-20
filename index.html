@@ -40,7 +40,9 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-bg"></div>
+      <div class="hero-bg">
+        <iframe src="https://player.vimeo.com/video/1170100005?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
       <div class="hero-content">
         <div class="hero-eyebrow mono">Research · Intelligence · Film</div>
         <h1 class="hero-h1">
@@ -208,7 +210,9 @@
         <div class="s-label">Proof <span class="s-num">— 04</span></div>
         <h2 class="s-title">The intelligence gets us to the right story. The craft is what makes it worth watching.</h2>
       </div>
-      <div class="vid-ph"><span>Case study video — coming soon</span></div>
+      <div class="vid-ph">
+        <iframe src="https://player.vimeo.com/video/1175739079?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen></iframe>
+      </div>
       <p class="proof-outcomes-hdr">What working with us looks like as a final product.</p>
       <div class="diff">
         <div class="diff-dot"></div>
@@ -235,10 +239,9 @@
           {
             num: "01",
             title: "Made on gut instinct.",
-            desc: "No audience data, no competitive analysis, no validation.",
             detail_h: "No research. No validation. Just a feeling.",
             detail_p:
-              "Someone in leadership had an idea for a video. Nobody checked whether the audience needed it, whether the message had been tested, or whether the competitive landscape supported the angle. Production started from a hunch.",
+              "Someone had an idea for a video. Nobody checked whether the audience needed it or whether the message had been tested. Production started from a hunch.",
             symptoms: [
               {
                 text: "No audience research conducted pre-production",
@@ -265,10 +268,9 @@
           {
             num: "02",
             title: "Made because a competitor did it.",
-            desc: "Didn't study what problem theirs solved or whether your audience cares.",
             detail_h: "Reactive. Not strategic.",
             detail_p:
-              "A competitor published a video that looked good. Leadership panicked and commissioned something similar. Nobody studied what problem the competitor's video actually solved, whether it worked, or whether the same audience segment even mattered.",
+              "A competitor posted something that looked good. Leadership commissioned something similar — without studying whether it worked or whether it reached the right audience.",
             symptoms: [
               {
                 text: "Brief references a competitor's video as the model",
@@ -298,10 +300,9 @@
           {
             num: "03",
             title: "Made because a vendor pitched it well.",
-            desc: "Started with the solution before defining the problem.",
             detail_h: "The vendor sold a deliverable. Not an outcome.",
             detail_p:
-              "A production company came in with a polished pitch deck and a slick reel. The organization bought the format before defining what success looked like. The video looked great. It moved no one.",
+              "A vendor came in with a polished reel. The org bought the format before defining what success looked like. The video looked great. It moved no one.",
             symptoms: [
               {
                 text: "Vendor proposed the concept before understanding the org",
@@ -328,10 +329,9 @@
           {
             num: "04",
             title: "Made without a distribution plan.",
-            desc: "Sat on a server. Nobody planned who needed to see it.",
             detail_h: "Great video. No audience. No plan. No impact.",
             detail_p:
-              "Production wrapped. The video looked cinematic. It got uploaded to YouTube, embedded on a page nobody visits, and shared once on LinkedIn. Six months later it has 340 views — 280 of which are internal.",
+              "Production wrapped. The video was uploaded to YouTube, embedded on a page nobody visits, shared once on LinkedIn. Six months later: 340 views — 280 internal.",
             symptoms: [
               {
                 text: "Distribution not discussed until after final delivery",
@@ -374,8 +374,6 @@
               d.num +
               '</div><div class="fm-title">' +
               d.title +
-              '</div><div class="fm-desc">' +
-              d.desc +
               '</div><div class="fm-bar"><div class="fm-bar-fill" id="fmbar' +
               i +
               '"></div></div>';
