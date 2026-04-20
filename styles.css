@@ -1025,6 +1025,9 @@ section {
   filter: grayscale(1) brightness(3) opacity(0.4);
   transition: filter 0.25s;
 }
+.client-logo.logo-lg {
+  height: 46px;
+}
 .client-logo:hover {
   filter: grayscale(1) brightness(3) opacity(0.75);
 }
@@ -1032,20 +1035,23 @@ section {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-/* Light mode ticker — white background, dark logos */
+/* Light mode ticker — light bg matching verticals, dark logos */
 html[data-theme="light"] .client-ticker-section {
-  background: #ffffff;
+  background: #f3f3f3;
+}
+html[data-theme="light"] .client-ticker-label {
+  color: #0a0a0a;
 }
 html[data-theme="light"] .client-ticker-wrap {
-  background: #ffffff;
-  border-top: 1px solid rgba(0, 0, 0, 0.07);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  background: #f3f3f3;
+  border-top: 1px solid rgba(0, 0, 0, 0.09);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
 }
 html[data-theme="light"] .client-ticker-wrap::before {
-  background: linear-gradient(to right, #ffffff, transparent);
+  background: linear-gradient(to right, #f3f3f3, transparent);
 }
 html[data-theme="light"] .client-ticker-wrap::after {
-  background: linear-gradient(to left, #ffffff, transparent);
+  background: linear-gradient(to left, #f3f3f3, transparent);
 }
 html[data-theme="light"] .client-logo {
   filter: grayscale(1) invert(1) brightness(0.15) opacity(0.55);
