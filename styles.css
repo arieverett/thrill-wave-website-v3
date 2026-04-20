@@ -961,23 +961,15 @@ section {
 }
 
 /* === CLIENT LOGO TICKER === */
-.client-ticker-wrap {
-  background: #0a0a0a;
-  padding: 24px 0 28px;
-  overflow: hidden;
-  position: relative;
-}
 .client-ticker-section {
   background: var(--near-black);
+  margin-top: -1px;
 }
-.client-ticker-label {
-  font-family: "Archivo", sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--white);
-  padding: 40px 48px 24px 160px;
+.client-ticker-wrap {
+  background: #0a0a0a;
+  padding: 14px 0;
+  overflow: hidden;
+  position: relative;
 }
 /* Fade edges */
 .client-ticker-wrap::before,
@@ -1037,9 +1029,6 @@ section {
 /* Light mode ticker — matches verticals section bg, dark logos */
 html[data-theme="light"] .client-ticker-section {
   background: #f3f3f3;
-}
-html[data-theme="light"] .client-ticker-label {
-  color: #0a0a0a;
 }
 html[data-theme="light"] .client-ticker-wrap {
   background: #f3f3f3;
