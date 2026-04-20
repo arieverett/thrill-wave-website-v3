@@ -144,7 +144,7 @@ nav {
   border: none;
   pointer-events: none;
 }
-.hero-bg::after {
+.hero-video .hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -297,13 +297,13 @@ section {
   line-height: 1.15;
   letter-spacing: -0.025em;
   margin-bottom: 18px;
-  max-width: 50%;
+  max-width: 680px;
 }
 .s-body {
   font-size: var(--fs-body);
   font-weight: 300;
   color: var(--gray);
-  max-width: 36%;
+  max-width: 460px;
   line-height: 1.8;
 }
 
@@ -649,7 +649,7 @@ section {
   font-size: var(--fs-body);
   color: var(--gray);
   line-height: 1.7;
-  max-width: 520px;
+  max-width: 680px;
   margin-bottom: 20px;
 }
 .mech-viz {
@@ -845,7 +845,6 @@ section {
 }
 .vert-hdr {
   margin-bottom: 48px;
-  max-width: 540px;
 }
 .vert-grid {
   display: grid;
@@ -1935,12 +1934,6 @@ footer p, .intel-filter, .intel-sort,
 
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
-  .s-title {
-    max-width: 70%;
-  }
-  .s-body {
-    max-width: 55%;
-  }
   .proof-points {
     max-width: 90%;
   }
@@ -2038,12 +2031,6 @@ footer p, .intel-filter, .intel-sort,
   }
   .fm-detail-right {
     width: 100%;
-  }
-  .s-title {
-    max-width: 100%;
-  }
-  .s-body {
-    max-width: 100%;
   }
   .proof-points {
     grid-template-columns: 1fr;

@@ -156,7 +156,12 @@
             card.innerHTML =
               '<div class="port-thumb">' +
               thumbInner +
+              '<div class="port-thumb-gradient"></div>' +
               '<div class="port-play"><div class="port-play-tri"></div></div>' +
+              '<div class="port-info">' +
+              '<div class="port-category">' + p.category + '</div>' +
+              '<div class="port-title">' + p.title + '</div>' +
+              '</div>' +
               "</div>";
 
             if (hasVideo) {
