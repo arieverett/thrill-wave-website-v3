@@ -297,12 +297,13 @@ section {
   line-height: 1.15;
   letter-spacing: -0.025em;
   margin-bottom: 18px;
+  max-width: 50%;
 }
 .s-body {
   font-size: var(--fs-body);
   font-weight: 300;
   color: var(--gray);
-  max-width: 580px;
+  max-width: 36%;
   line-height: 1.8;
 }
 
@@ -892,15 +893,20 @@ section {
 .proof {
   border-top: 1px solid var(--border);
 }
-.proof-outcomes-hdr {
-  font-size: var(--fs-h2);
-  font-weight: 500;
-  color: var(--white);
-  margin: 40px 0 8px;
-  letter-spacing: -0.01em;
+.proof-points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 64px;
+  margin: 32px 0 56px;
+  max-width: 60%;
 }
-.proof-hdr {
-  margin-bottom: 48px;
+.proof-point {
+  font-size: var(--fs-body);
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.7;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
 }
 .vid-ph {
   position: relative;
@@ -1929,6 +1935,15 @@ footer p, .intel-filter, .intel-sort,
 
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
+  .s-title {
+    max-width: 70%;
+  }
+  .s-body {
+    max-width: 55%;
+  }
+  .proof-points {
+    max-width: 90%;
+  }
   .fm-cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2023,6 +2038,16 @@ footer p, .intel-filter, .intel-sort,
   }
   .fm-detail-right {
     width: 100%;
+  }
+  .s-title {
+    max-width: 100%;
+  }
+  .s-body {
+    max-width: 100%;
+  }
+  .proof-points {
+    grid-template-columns: 1fr;
+    max-width: 100%;
   }
   .hero-ctas {
     flex-direction: column;
