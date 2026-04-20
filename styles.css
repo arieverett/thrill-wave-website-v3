@@ -36,11 +36,11 @@
    Applied when html[data-theme="light"]
    ============================================ */
 html[data-theme="light"] {
-  /* Backgrounds */
-  --black: #f5f3ef;
-  --near-black: #edebe6;
-  --dark: #e4e1db;
-  --card: #e8e5e0;
+  /* Backgrounds — true white */
+  --black: #ffffff;
+  --near-black: #f9f9f9;
+  --dark: #f3f3f3;
+  --card: #efefef;
 
   /* Borders */
   --border: rgba(0, 0, 0, 0.09);
@@ -57,16 +57,36 @@ html[data-theme="light"] {
   --orange-border: rgba(224, 96, 0, 0.18);
 }
 
-/* Nav backdrop — overrides the hardcoded rgba dark value */
+/* Nav backdrop — true white */
 html[data-theme="light"] nav {
-  background: rgba(245, 243, 239, 0.94);
+  background: rgba(255, 255, 255, 0.95);
 }
 
-/* Logo swap */
-.logo-dark { display: inline; }
-.logo-light { display: none; }
-html[data-theme="light"] .logo-dark { display: none; }
-html[data-theme="light"] .logo-light { display: inline; }
+/* Triptych cards — border so they're visible on white background */
+html[data-theme="light"] .tri-card {
+  border: 1px solid var(--border);
+}
+
+/* Triptych number labels — visible on white */
+html[data-theme="light"] .tri-num {
+  color: rgba(0, 0, 0, 0.18);
+}
+
+/* Remove text-shadows on solid-background hero sections in light mode */
+html[data-theme="light"] .hero-eyebrow,
+html[data-theme="light"] .hero-h1,
+html[data-theme="light"] .hero-sub {
+  text-shadow: none;
+}
+/* Restore text-shadow on homepage video hero only */
+html[data-theme="light"] .hero-video .hero-eyebrow { text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
+html[data-theme="light"] .hero-video .hero-h1      { text-shadow: 0 2px 16px rgba(0,0,0,0.6); }
+html[data-theme="light"] .hero-video .hero-sub     { text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
+
+/* Portfolio thumbnail overlay — keep text white over dark thumbnails */
+html[data-theme="light"] .port-title {
+  color: #ffffff;
+}
 
 * {
   margin: 0;
@@ -1006,17 +1026,17 @@ section {
   max-width: 100%;
 }
 
-/* Intel fallback image: greyscale + orange tint */
+/* Intel fallback image: no filter, no overlay — show clean */
 .intel-card-img.has-default img,
 .intel-feat-img-inner.has-default img {
-  filter: grayscale(65%);
+  filter: none;
 }
 .intel-card-img.has-default::after,
 .intel-feat-img-inner.has-default::after {
-  content: '';
+  content: none;
   position: absolute;
   inset: 0;
-  background: rgba(224, 96, 0, 0.18);
+  background: none;
   pointer-events: none;
 }
 
