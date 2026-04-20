@@ -649,7 +649,7 @@ section {
   font-size: var(--fs-body);
   color: var(--gray);
   line-height: 1.7;
-  max-width: 680px;
+  max-width: 100%;
   margin-bottom: 20px;
 }
 .mech-viz {
@@ -958,6 +958,15 @@ section {
 .sitrep-page .s-body,
 .sitrep-page .hero-sub {
   max-width: 672px;
+}
+.sitrep-problem-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 16px;
+}
+.sitrep-problem-cols .s-body {
+  max-width: 100%;
 }
 
 /* Intel fallback image: greyscale + orange tint */
@@ -1921,10 +1930,17 @@ footer p {
 }
 .port-title {
   font-size: var(--fs-h2);
-  font-weight: 600;
   color: var(--white);
-  margin-bottom: 4px;
-  line-height: 1.2;
+  line-height: 1.25;
+}
+.port-title-client {
+  display: block;
+  font-weight: 900;
+}
+.port-title-name {
+  display: block;
+  font-weight: 300;
+  opacity: 0.85;
 }
 .port-client {
   font-size: var(--fs-body);
@@ -2060,6 +2076,10 @@ footer p, .intel-filter, .intel-sort,
   .proof-points {
     grid-template-columns: 1fr;
     max-width: 100%;
+  }
+  .sitrep-problem-cols {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
   .hero-ctas {
     flex-direction: column;
