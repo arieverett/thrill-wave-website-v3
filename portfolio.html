@@ -42,7 +42,21 @@
       <div class="port-count" id="port-count"></div>
     </section>
 
-    <!-- CTA -->
+    <!-- LIGHTBOX MODAL -->
+    <div id="port-modal" class="port-modal-overlay" onclick="closePortModal()">
+      <button class="port-modal-close" onclick="closePortModal()">&times;</button>
+      <div class="port-modal-inner" onclick="event.stopPropagation()">
+        <div class="port-modal-video">
+          <iframe id="port-modal-iframe" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="port-modal-meta">
+          <div class="port-modal-category" id="port-modal-cat"></div>
+          <div class="port-modal-title" id="port-modal-title"></div>
+          <div class="port-modal-desc" id="port-modal-desc"></div>
+        </div>
+      </div>
+    </div>
+
     <div id="site-footer"></div>
 
     <script src="includes.js"></script>
@@ -232,26 +246,32 @@
             card.style.opacity = "0";
             card.style.animation =
               "fadeUp 0.5s ease " + Math.min(i * 0.08, 0.6) + "s forwards";
-            var thumbContent = p.vimeoId
-              ? '<iframe src="https://player.vimeo.com/video/' + p.vimeoId + '?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="' + p.title + '"></iframe>'
-              : '<div class="port-thumb-inner"><span class="port-thumb-label">' + p.client + '</span></div><div class="port-play"><div class="port-play-tri"></div></div>';
+
+            var thumbInner = p.vimeoId
+              ? '<div class="port-thumb-inner" style="background-image:url(https://vumbnail.com/' + p.vimeoId + '.jpg);background-size:cover;background-position:center;"></div>'
+              : '<div class="port-thumb-inner"><span class="port-thumb-label">' + p.client + "</span></div>";
 
             card.innerHTML =
               '<div class="port-thumb">' +
-              thumbContent +
+              thumbInner +
               '<div class="port-thumb-gradient"></div>' +
+              '<div class="port-play"><div class="port-play-tri"></div></div>' +
               "</div>" +
               '<div class="port-info">' +
-              '<div class="port-category">' +
-              p.category +
-              "</div>" +
-              '<div class="port-title">' +
-              p.title +
-              "</div>" +
-              '<div class="port-client">' +
-              p.desc +
-              "</div>" +
+              '<div class="port-category">' + p.category + "</div>" +
+              '<div class="port-title">' + p.title + "</div>" +
+              '<div class="port-client">' + p.desc + "</div>" +
               "</div>";
+
+            if (p.vimeoId) {
+              card.style.cursor = "pointer";
+              (function(proj) {
+                card.addEventListener("click", function() {
+                  openPortModal(proj.vimeoId, proj.title, proj.category, proj.desc);
+                });
+              })(p);
+            }
+
             el.appendChild(card);
           });
 
@@ -261,6 +281,26 @@
 
         buildFilters();
         buildGrid();
+
+        window.openPortModal = function(vimeoId, title, category, desc) {
+          document.getElementById("port-modal-iframe").src =
+            "https://player.vimeo.com/video/" + vimeoId + "?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479";
+          document.getElementById("port-modal-cat").textContent = category;
+          document.getElementById("port-modal-title").textContent = title;
+          document.getElementById("port-modal-desc").textContent = desc;
+          document.getElementById("port-modal").classList.add("active");
+          document.body.style.overflow = "hidden";
+        };
+
+        window.closePortModal = function() {
+          document.getElementById("port-modal-iframe").src = "";
+          document.getElementById("port-modal").classList.remove("active");
+          document.body.style.overflow = "";
+        };
+
+        document.addEventListener("keydown", function(e) {
+          if (e.key === "Escape") window.closePortModal();
+        });
       })();
     </script>
   </body>
