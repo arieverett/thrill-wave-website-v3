@@ -3,6 +3,12 @@
    Shared by index.html and sitrep.html
    ============================================ */
 (function () {
+  /* Returns rgba string using white in dark mode, black in light mode */
+  function tw(alpha) {
+    var v = document.documentElement.getAttribute('data-theme') === 'light' ? 0 : 255;
+    return 'rgba(' + v + ',' + v + ',' + v + ',' + alpha + ')';
+  }
+
   function init(id, drawFn) {
     var c = document.getElementById(id);
     if (!c) return;
@@ -59,7 +65,7 @@
       ctx.clearRect(0, 0, W, H);
       for (var i = 0; i < s.streams.length; i++) {
         var st = s.streams[i];
-        ctx.strokeStyle = "rgba(255,255,255," + st.baseAlpha + ")";
+        ctx.strokeStyle = tw(st.baseAlpha);
         ctx.lineWidth = 0.5;
         ctx.beginPath();
         ctx.moveTo(0, st.y);
@@ -78,11 +84,11 @@
               size: d.size,
             });
           }
-          ctx.fillStyle = "rgba(255,255,255," + d.alpha + ")";
+          ctx.fillStyle = tw(d.alpha);
           ctx.fillRect(d.x, st.y - d.size / 2, d.size * 2.2, d.size);
         }
       }
-      ctx.strokeStyle = "rgba(255,255,255,0.05)";
+      ctx.strokeStyle = tw(0.05);
       ctx.lineWidth = 0.5;
       ctx.beginPath();
       ctx.moveTo(collectX, H * 0.08);
@@ -97,7 +103,7 @@
           s.collected.splice(k, 1);
           continue;
         }
-        ctx.fillStyle = "rgba(255,255,255," + p.alpha + ")";
+        ctx.fillStyle = tw(p.alpha);
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * 0.5, 0, Math.PI * 2);
         ctx.fill();
@@ -156,8 +162,7 @@
             dy = a.y - b.y,
             dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 55) {
-            ctx.strokeStyle =
-              "rgba(255,255,255," + (1 - dist / 55) * 0.1 * progress + ")";
+            ctx.strokeStyle = tw((1 - dist / 55) * 0.1 * progress);
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -200,8 +205,7 @@
       }
       for (var i = 0; i < s.nodes.length; i++) {
         var n = s.nodes[i];
-        ctx.fillStyle =
-          "rgba(255,255,255," + (n.alpha * 0.5 + progress * 0.12) + ")";
+        ctx.fillStyle = tw(n.alpha * 0.5 + progress * 0.12);
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
         ctx.fill();
@@ -238,7 +242,7 @@
           s.rings.splice(i, 1);
           continue;
         }
-        ctx.strokeStyle = "rgba(255,255,255," + ring.alpha + ")";
+        ctx.strokeStyle = tw(ring.alpha);
         ctx.lineWidth = 0.5;
         ctx.beginPath();
         ctx.arc(ox, oy, ring.r, 0, Math.PI * 2);
@@ -248,7 +252,7 @@
       ctx.beginPath();
       ctx.arc(ox, oy, 5.5 + Math.sin(s.t * 0.05) * 1.2, 0, Math.PI * 2);
       ctx.fill();
-      ctx.fillStyle = "rgba(255,255,255,0.65)";
+      ctx.fillStyle = tw(0.65);
       ctx.beginPath();
       ctx.arc(ox, oy, 2.2, 0, Math.PI * 2);
       ctx.fill();
@@ -259,7 +263,7 @@
         b.alpha = 0.035 + Math.sin(s.t * 0.014 + i * 1.1) * 0.018;
         var ex = ox + Math.cos(b.angle) * b.length,
           ey = oy + Math.sin(b.angle) * b.length;
-        ctx.strokeStyle = "rgba(255,255,255," + b.alpha + ")";
+        ctx.strokeStyle = tw(b.alpha);
         ctx.lineWidth = 0.5;
         ctx.beginPath();
         ctx.moveTo(ox, oy);
@@ -289,7 +293,7 @@
           s.particles.splice(i, 1);
           continue;
         }
-        ctx.fillStyle = "rgba(255,255,255," + p.alpha + ")";
+        ctx.fillStyle = tw(p.alpha);
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
         ctx.fill();
