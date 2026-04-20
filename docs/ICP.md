@@ -31,13 +31,12 @@ Skip these — they waste pipeline:
 ## Priority Verticals
 
 ### Tier 1 — Active Pipeline
-- **Government / Public Affairs** — state agencies, city/county government, tribal nations. Arizona is home turf but national is fine. Border/immigration is ground zero for narrative stakes.
+- **Government / Public Affairs** — state agencies, city/county government, tribal nations and indigenous organizations. Arizona is home turf but national is fine. Border/immigration is ground zero for narrative stakes.
 - **Healthcare Systems** — Banner, HonorHealth, Mayo Clinic Scottsdale, AHCCCS, community health orgs. Patient stories, public health campaigns, recruitment.
-- **Tribal Governments & Organizations** — ITCA is the flagship. Native Vote series is the proof point. Sovereignty, cultural preservation, voter engagement, public health.
 
 ### Tier 2 — High Potential
 - **Defense & Aerospace** — Raytheon, Boeing Mesa, Luke AFB, Honeywell Aerospace. Recruitment, public affairs, community relations. Long sales cycles but big contracts.
-- **Semiconductors / Advanced Manufacturing** — TSMC Arizona, Intel Chandler. Historic investment in AZ, massive workforce buildout, community narrative challenges.
+- **Technology & Manufacturing** — TSMC Arizona, Intel Chandler. Historic investment in AZ, massive workforce buildout, community narrative challenges.
 - **International NGOs** — organizations operating in contested or sensitive environments. Documentary-grade storytelling for advocacy, fundraising, or awareness.
 
 ### Tier 3 — Opportunistic

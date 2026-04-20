@@ -13,7 +13,7 @@ The whole thing runs unattended. Chris reviews the briefing, spots-checks the au
 Two sources, running in parallel:
 
 1. **SAM.gov** - Federal RFPs for video production, media, communications, and creative services
-2. **Google News via Claude web search** - 33 keyword queries covering Arizona government, healthcare, tribal, defense, nonprofit, education, real estate, tech, and national verticals
+2. **Google News via Claude web search** - 33 keyword queries covering Arizona government, healthcare, defense, nonprofit, education, real estate, tech, and national verticals
 
 The agent scores every opportunity on a 1-10 warmth scale. Only 7+ make it through. Warmth means: this org has an active need right now, not "they might need video someday."
 
@@ -162,7 +162,7 @@ In priority order:
 1. **Government / Public Affairs** - state agencies, city/county, tribal nations, public-sector nonprofits. Arizona home turf, national fine.
 2. **Healthcare** - Banner, HonorHealth, Mayo Scottsdale, AHCCCS, community health orgs
 3. **Defense / Aerospace** - Raytheon, Boeing Mesa, Luke AFB. Recruitment, public affairs.
-4. **Semiconductors** - TSMC Arizona, Intel Chandler. Workforce narrative challenges.
+4. **Technology & Manufacturing** - TSMC Arizona, Intel Chandler. Workforce narrative challenges.
 5. **NGOs** - organizations in contested or sensitive environments
 6. **Higher Ed, Energy, Real Estate** - opportunistic
 
@@ -177,5 +177,5 @@ In priority order:
 
 Use sparingly and casually, never as a pitch:
 
-- **ITCA** (tribal, government, healthcare, nonprofit) - WIC, Voter Education, Tribal Epidemiology Center. Trust-building media campaigns.
+- **ITCA** (government, healthcare, nonprofit) - WIC, Voter Education, Tribal Epidemiology Center. Trust-building media campaigns.
 - **Relentless Beats** (music, entertainment, events) - Visual media strategy and live event coverage. Almost a decade.
