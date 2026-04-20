@@ -963,16 +963,12 @@ section {
 /* === CLIENT LOGO TICKER === */
 .client-ticker-wrap {
   background: #0a0a0a;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   padding: 24px 0 28px;
   overflow: hidden;
   position: relative;
 }
 .client-ticker-section {
   background: var(--near-black);
-  border-top: 1px solid var(--border);
-  padding-bottom: 40px;
 }
 .client-ticker-label {
   font-family: "Archivo", sans-serif;
@@ -981,7 +977,7 @@ section {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--white);
-  padding: 40px 48px 24px;
+  padding: 40px 48px 24px 160px;
 }
 /* Fade edges */
 .client-ticker-wrap::before,
@@ -1028,6 +1024,9 @@ section {
 .client-logo.logo-lg {
   height: 46px;
 }
+.client-logo.logo-xl {
+  height: 62px;
+}
 .client-logo:hover {
   filter: grayscale(1) brightness(3) opacity(0.75);
 }
@@ -1044,8 +1043,6 @@ html[data-theme="light"] .client-ticker-label {
 }
 html[data-theme="light"] .client-ticker-wrap {
   background: #f3f3f3;
-  border-top: 1px solid rgba(0, 0, 0, 0.09);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
 }
 html[data-theme="light"] .client-ticker-wrap::before {
   background: linear-gradient(to right, #f3f3f3, transparent);
