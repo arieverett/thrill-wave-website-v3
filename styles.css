@@ -31,6 +31,43 @@
   --fs-mono: 16px;
 }
 
+/* ============================================
+   LIGHT MODE OVERRIDES
+   Applied when html[data-theme="light"]
+   ============================================ */
+html[data-theme="light"] {
+  /* Backgrounds */
+  --black: #f5f3ef;
+  --near-black: #edebe6;
+  --dark: #e4e1db;
+  --card: #e8e5e0;
+
+  /* Borders */
+  --border: rgba(0, 0, 0, 0.09);
+  --border-l: rgba(0, 0, 0, 0.18);
+  --border-mid: rgba(0, 0, 0, 0.24);
+
+  /* Text */
+  --white: #1a1a1a;
+  --pure: #0a0a0a;
+  --gray: #575757;
+
+  /* Orange variants */
+  --orange-glow: rgba(224, 96, 0, 0.05);
+  --orange-border: rgba(224, 96, 0, 0.18);
+}
+
+/* Nav backdrop — overrides the hardcoded rgba dark value */
+html[data-theme="light"] nav {
+  background: rgba(245, 243, 239, 0.94);
+}
+
+/* Logo swap */
+.logo-dark { display: inline; }
+.logo-light { display: none; }
+html[data-theme="light"] .logo-dark { display: none; }
+html[data-theme="light"] .logo-light { display: inline; }
+
 * {
   margin: 0;
   padding: 0;
@@ -1102,6 +1139,68 @@ footer p {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
+/* === THEME TOGGLE === */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-mid);
+  background: transparent;
+  cursor: pointer;
+  color: var(--gray);
+  transition: color 0.25s, border-color 0.25s;
+  flex-shrink: 0;
+  padding: 0;
+}
+.theme-toggle:hover {
+  color: var(--white);
+  border-color: var(--white);
+}
+.theme-toggle svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+  flex-shrink: 0;
+}
+/* Dark mode: show moon, hide sun */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+/* Light mode: show sun, hide moon */
+html[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+/* Mobile in-menu toggle — full-width row inside hamburger panel */
+.theme-toggle-mobile {
+  display: none; /* hidden on desktop */
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid var(--border);
+  padding: 18px 0;
+  gap: 12px;
+  justify-content: flex-start;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.theme-toggle-mobile svg {
+  width: 16px;
+  height: 16px;
+}
+.theme-toggle-label {
+  color: var(--gray);
+}
+
+/* Desktop-only toggle — shown in nav-right */
+.theme-toggle-desktop {
+  display: flex;
+}
+
 /* === CONTACT === */
 .contact-hero {
   min-height: 50vh;
@@ -2054,6 +2153,13 @@ footer p, .intel-filter, .intel-sort,
   }
   .nav-burger {
     z-index: 101;
+  }
+  /* Theme toggle — desktop variant hidden, mobile variant shown inside menu */
+  .theme-toggle-desktop {
+    display: none;
+  }
+  .theme-toggle-mobile {
+    display: flex;
   }
   .nav-right {
     z-index: 101;
