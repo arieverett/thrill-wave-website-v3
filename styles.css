@@ -82,6 +82,18 @@ html[data-theme="light"] .tri-num {
 .hero-video .hero-sub {
   color: rgba(255, 255, 255, 0.85);
 }
+/* Hero video CTA buttons — force white style over video in light mode */
+html[data-theme="light"] .hero-video .btn-w {
+  color: #ffffff;
+}
+html[data-theme="light"] .hero-video .btn-g {
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+html[data-theme="light"] .hero-video .btn-g:hover {
+  color: #ffffff;
+  border-bottom-color: var(--orange);
+}
 /* Solid-background hero sections in light mode — no shadows */
 html[data-theme="light"] .hero-eyebrow,
 html[data-theme="light"] .hero-h1,
@@ -949,6 +961,19 @@ section {
 }
 
 /* === CLIENT LOGO TICKER === */
+.client-ticker-section {
+  background: var(--near-black);
+  border-top: 1px solid var(--border);
+}
+.client-ticker-label {
+  font-family: "Archivo", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  padding: 40px 48px 20px;
+}
 .client-ticker-wrap {
   background: #0a0a0a;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -956,14 +981,6 @@ section {
   padding: 24px 0 28px;
   overflow: hidden;
   position: relative;
-}
-.client-ticker-label {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.25);
-  padding: 0 0 16px 40px;
 }
 /* Fade edges */
 .client-ticker-wrap::before,
@@ -1015,6 +1032,9 @@ section {
   to   { transform: translateX(-50%); }
 }
 /* Light mode ticker — white background, dark logos */
+html[data-theme="light"] .client-ticker-section {
+  background: #ffffff;
+}
 html[data-theme="light"] .client-ticker-wrap {
   background: #ffffff;
   border-top: 1px solid rgba(0, 0, 0, 0.07);
@@ -1025,9 +1045,6 @@ html[data-theme="light"] .client-ticker-wrap::before {
 }
 html[data-theme="light"] .client-ticker-wrap::after {
   background: linear-gradient(to left, #ffffff, transparent);
-}
-html[data-theme="light"] .client-ticker-label {
-  color: rgba(0, 0, 0, 0.3);
 }
 html[data-theme="light"] .client-logo {
   filter: grayscale(1) invert(1) brightness(0.15) opacity(0.55);
