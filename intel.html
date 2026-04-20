@@ -96,6 +96,7 @@
            ============================================= */
         var SUBSTACK_URL = "https://chriskuzman.substack.com";
         var FEED_URL = SUBSTACK_URL + "/feed";
+        var RSS2JSON_URL = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(FEED_URL);
 
         /* Category keywords — posts are auto-tagged based on 
            title/content matching. Add or adjust as needed. */
@@ -176,72 +177,8 @@
         var activeFilter = "all";
         var sortOrder = "newest";
 
-        /* =============================================
-           FALLBACK POSTS — shown if RSS fails
-           ============================================= */
-        var fallbackPosts = [
-          {
-            title:
-              "Why Most Organizational Video Fails Before the Camera Turns On",
-            excerpt:
-              "Four failure modes. All preventable. The problem isn't production quality — it's the strategic foundation.",
-            date: "2025-03-15",
-            url: SUBSTACK_URL,
-            category: "strategy",
-            categoryLabel: "Strategy",
-            image: "",
-          },
-          {
-            title: "The SITREP: How We Decide What to Make",
-            excerpt:
-              "Before we unpack a camera, we ingest your full data environment. Here's what that actually means.",
-            date: "2025-02-28",
-            url: SUBSTACK_URL,
-            category: "strategy",
-            categoryLabel: "Strategy",
-            image: "",
-          },
-          {
-            title: "Distribution Is Not a Post-Production Problem",
-            excerpt:
-              "If you're thinking about distribution after the edit is locked, you've already lost. It needs to be built alongside production.",
-            date: "2025-02-10",
-            url: SUBSTACK_URL,
-            category: "distribution",
-            categoryLabel: "Distribution",
-            image: "",
-          },
-          {
-            title: "What I Learned Filming Tribal Health Directors",
-            excerpt:
-              "Standard messaging was counterproductive. They needed their own leaders on screen, not outside authorities.",
-            date: "2025-01-20",
-            url: SUBSTACK_URL,
-            category: "production",
-            categoryLabel: "Production",
-            image: "",
-          },
-          {
-            title: "The Vendor Pitched It Well. The Video Moved No One.",
-            excerpt:
-              "A production company came in with a polished pitch deck and a slick reel. The organization bought the format before defining success.",
-            date: "2025-01-05",
-            url: SUBSTACK_URL,
-            category: "culture",
-            categoryLabel: "Culture",
-            image: "",
-          },
-          {
-            title: "LLMs in Pre-Production: What We're Actually Doing",
-            excerpt:
-              "Sentiment analysis, narrative gap detection, audience trust scoring. How we use AI before we use a camera.",
-            date: "2024-12-18",
-            url: SUBSTACK_URL,
-            category: "strategy",
-            categoryLabel: "Strategy",
-            image: "",
-          },
-        ];
+        /* No fallback posts — only show real Substack content */
+        var fallbackPosts = [];
 
         /* =============================================
            AUTO-CATEGORIZE based on keywords
@@ -507,25 +444,48 @@
         }
 
         /* =============================================
-           FETCH FROM SUBSTACK RSS
+           FETCH FROM SUBSTACK VIA RSS2JSON (handles CORS)
            ============================================= */
         function loadPosts() {
-          fetch(FEED_URL)
+          fetch(RSS2JSON_URL)
             .then(function (response) {
-              if (!response.ok) throw new Error("RSS fetch failed");
-              return response.text();
+              if (!response.ok) throw new Error("Fetch failed");
+              return response.json();
             })
-            .then(function (xml) {
-              allPosts = parseRSS(xml);
-              if (allPosts.length === 0) {
-                allPosts = fallbackPosts;
+            .then(function (data) {
+              if (data.status === "ok" && data.items && data.items.length > 0) {
+                allPosts = data.items.map(function (item) {
+                  var cat = categorize(item.title, item.description || "");
+                  var tmp = document.createElement("div");
+                  tmp.innerHTML = item.description || "";
+                  var plainText = tmp.textContent || tmp.innerText || "";
+                  var excerpt =
+                    plainText.length > 220
+                      ? plainText.substring(0, 220).trim() + "..."
+                      : plainText.trim();
+                  return {
+                    title: item.title,
+                    excerpt: excerpt,
+                    date: item.pubDate
+                      ? new Date(item.pubDate).toISOString().split("T")[0]
+                      : "",
+                    url: item.link,
+                    category: cat.tag,
+                    categoryLabel: cat.label,
+                    image: item.thumbnail || "",
+                  };
+                });
+              } else {
+                allPosts = [];
               }
               render();
             })
             .catch(function () {
-              // RSS failed — use fallback posts
-              allPosts = fallbackPosts;
-              render();
+              allPosts = [];
+              document.getElementById("intel-grid").innerHTML =
+                '<div class="intel-empty">Unable to load posts. <a href="' +
+                SUBSTACK_URL +
+                '" target="_blank" style="color:var(--orange);text-decoration:none">Visit Substack directly ↗</a></div>';
             });
         }
 
