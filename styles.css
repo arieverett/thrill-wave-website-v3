@@ -1775,7 +1775,7 @@ footer p {
 }
 .port-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 .port-card {
@@ -1788,9 +1788,6 @@ footer p {
 }
 .port-card:hover {
   border-color: var(--border-l);
-}
-.port-card.featured {
-  grid-column: 1 / -1;
 }
 .port-thumb {
   position: relative;
