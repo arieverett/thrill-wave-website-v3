@@ -950,6 +950,30 @@ section {
   color: var(--gray);
 }
 
+/* === SITREP PAGE OVERRIDES === */
+.sitrep-page .s-title,
+.sitrep-page .hero-h1 {
+  max-width: 900px;
+}
+.sitrep-page .s-body,
+.sitrep-page .hero-sub {
+  max-width: 672px;
+}
+
+/* Intel fallback image: greyscale + orange tint */
+.intel-card-img.has-default img,
+.intel-feat-img-inner.has-default img {
+  filter: grayscale(65%);
+}
+.intel-card-img.has-default::after,
+.intel-feat-img-inner.has-default::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(224, 96, 0, 0.18);
+  pointer-events: none;
+}
+
 /* === CTA === */
 .cta {
   padding: 132px 48px;
@@ -1617,6 +1641,7 @@ footer p {
   color: var(--pure);
   background: var(--orange);
   padding: 13px 30px;
+  border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s;
   white-space: nowrap;

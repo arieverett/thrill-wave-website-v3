@@ -97,6 +97,7 @@
         var SUBSTACK_URL = "https://chriskuzman.substack.com";
         var FEED_URL = SUBSTACK_URL + "/feed";
         var RSS2JSON_URL = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(FEED_URL);
+        var DEFAULT_THUMB = "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&q=80";
 
         /* Category keywords — posts are auto-tagged based on 
            title/content matching. Add or adjust as needed. */
@@ -350,16 +351,12 @@
             feat.rel = "noopener";
             feat.style.textDecoration = "none";
 
-            var imgContent = fp.image
-              ? '<img src="' +
-                fp.image +
-                '" alt="' +
-                fp.title +
-                '" loading="lazy" />'
-              : '<div class="intel-card-img-ph">' + fp.categoryLabel + "</div>";
+            var featImgSrc = fp.image || DEFAULT_THUMB;
+            var featImgClass = fp.image ? "" : " has-default";
+            var imgContent = '<img src="' + featImgSrc + '" alt="' + fp.title + '" loading="lazy" />';
 
             feat.innerHTML =
-              '<div class="intel-feat-img"><div class="intel-feat-img-inner">' +
+              '<div class="intel-feat-img"><div class="intel-feat-img-inner' + featImgClass + '">' +
               imgContent +
               "</div></div>" +
               '<div class="intel-feat-body">' +
@@ -404,18 +401,12 @@
               card.style.animation =
                 "fadeUp 0.4s ease " + Math.min(i * 0.06, 0.5) + "s forwards";
 
-              var imgHTML = p.image
-                ? '<img src="' +
-                  p.image +
-                  '" alt="' +
-                  p.title +
-                  '" loading="lazy" />'
-                : '<div class="intel-card-img-ph">' +
-                  p.categoryLabel +
-                  "</div>";
+              var cardImgSrc = p.image || DEFAULT_THUMB;
+              var cardImgClass = p.image ? "intel-card-img" : "intel-card-img has-default";
+              var imgHTML = '<img src="' + cardImgSrc + '" alt="' + p.title + '" loading="lazy" />';
 
               card.innerHTML =
-                '<div class="intel-card-img">' +
+                '<div class="' + cardImgClass + '">' +
                 imgHTML +
                 "</div>" +
                 '<div class="intel-card-body">' +
